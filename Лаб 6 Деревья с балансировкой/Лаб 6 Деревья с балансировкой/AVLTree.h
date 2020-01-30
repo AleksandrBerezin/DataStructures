@@ -10,6 +10,7 @@ struct AVLTree
 	AVLTreeNode* Find(int key);
 	AVLTreeNode* FindMin();
 	AVLTreeNode* Remove(AVLTreeNode* node, int key);
+	void Clear(AVLTreeNode* node);
 	bool IsEmpty();
 };
 

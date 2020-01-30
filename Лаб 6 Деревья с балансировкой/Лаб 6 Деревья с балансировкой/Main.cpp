@@ -133,6 +133,7 @@ int main()
 						break;
 					}
 
+					avlTree->Clear(avlTree->Root);
 					delete avlTree;
 					avlTree = nullptr;
 					break;
@@ -286,6 +287,7 @@ int main()
 		case 0:
 			if (avlTree != nullptr)
 			{
+				avlTree->Clear(avlTree->Root);
 				delete avlTree;
 				avlTree = nullptr;
 			}

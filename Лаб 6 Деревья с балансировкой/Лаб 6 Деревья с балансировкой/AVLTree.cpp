@@ -167,6 +167,19 @@ AVLTreeNode* AVLTree::Remove(AVLTreeNode* node, int key)
 	}
 }
 
+void AVLTree::Clear(AVLTreeNode* node)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	Clear(node->Left);
+	Clear(node->Right);
+
+	delete node;
+}
+
 bool AVLTree::IsEmpty()
 {
 	return Root == nullptr;
