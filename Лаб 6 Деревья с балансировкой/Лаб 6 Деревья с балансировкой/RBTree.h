@@ -3,6 +3,7 @@ struct RBTree
 {
 	RBTreeNode* Root;
 	RBTreeNode* Nil;
+	int CountRotate;
 
 	RBTreeNode* CreateNode(int key);
 	void RotateLeft(RBTreeNode* node);
@@ -20,6 +21,7 @@ struct RBTree
 		Nil = new RBTreeNode();
 		Nil->IsBlack = true;
 		Root = Nil;
+		CountRotate = 0;
 	}
 };
 

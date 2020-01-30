@@ -38,6 +38,8 @@ void RBTree::RotateLeft(RBTreeNode* node)
 
 	newNode->Left = node;
 	node->Parent = newNode;
+
+	CountRotate++;
 }
 
 void RBTree::RotateRight(RBTreeNode* node)
@@ -65,6 +67,8 @@ void RBTree::RotateRight(RBTreeNode* node)
 
 	newNode->Right = node;
 	node->Parent = newNode;
+
+	CountRotate++;
 }
 
 void RBTree::Insert(int key)

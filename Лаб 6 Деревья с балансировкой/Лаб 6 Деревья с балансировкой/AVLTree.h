@@ -2,6 +2,7 @@
 struct AVLTree
 {
 	AVLTreeNode* Root = nullptr;
+	int CountRotate = 0;
 
 	AVLTreeNode* RotateLeft(AVLTreeNode* node);
 	AVLTreeNode* RotateRight(AVLTreeNode* node);

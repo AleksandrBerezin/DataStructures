@@ -12,6 +12,7 @@ AVLTreeNode* AVLTree::RotateLeft(AVLTreeNode* node)
 
 	node->FixHeight();
 	newNode->FixHeight();
+	CountRotate++;
 
 	return newNode;
 }
@@ -24,6 +25,7 @@ AVLTreeNode* AVLTree::RotateRight(AVLTreeNode* node)
 
 	node->FixHeight();
 	newNode->FixHeight();
+	CountRotate++;
 
 	return newNode;
 }
