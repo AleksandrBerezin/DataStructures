@@ -39,8 +39,6 @@ int main()
 					<< "3. Поиск элемента.\n"
 					<< "4. Удаление дерева.\n"
 					<< "5. Вывод дерева на экран.\n"
-					<< "6. Измерение времени для вставки.\n"
-					<< "7. Измерение времени для удаления.\n"
 					<< "0. Назад.\n\n";
 
 				int variant = InputInt();
@@ -261,6 +259,7 @@ int main()
 						break;
 					}
 
+					rbTree->Clear(rbTree->Root);
 					delete rbTree;
 					rbTree = nullptr;
 					break;
@@ -293,6 +292,7 @@ int main()
 			}
 			if (rbTree != nullptr)
 			{
+				rbTree->Clear(rbTree->Root);
 				delete rbTree;
 				rbTree = nullptr;
 			}

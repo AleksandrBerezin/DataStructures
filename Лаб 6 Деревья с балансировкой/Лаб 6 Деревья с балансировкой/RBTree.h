@@ -12,6 +12,7 @@ struct RBTree
 	RBTreeNode* Find(int key);
 	void Remove(int key);
 	void FixRemoving(RBTreeNode* node);
+	void Clear(RBTreeNode* node);
 	bool IsEmpty();
 
 	RBTree()

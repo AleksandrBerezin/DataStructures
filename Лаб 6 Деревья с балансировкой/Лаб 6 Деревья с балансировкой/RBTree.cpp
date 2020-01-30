@@ -352,6 +352,19 @@ void RBTree::FixRemoving(RBTreeNode* node)
 	node->IsBlack = true;
 }
 
+void RBTree::Clear(RBTreeNode* node)
+{
+	if (node == Nil)
+	{
+		return;
+	}
+
+	Clear(node->Left);
+	Clear(node->Right);
+
+	delete node;
+}
+
 bool RBTree::IsEmpty()
 {
 	return Root == Nil;
