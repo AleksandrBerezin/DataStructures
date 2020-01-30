@@ -1,9 +1,9 @@
 #pragma once
 struct RBTree
 {
-	RBTreeNode* Root;
-	RBTreeNode* Nil;
-	int CountRotate;
+	RBTreeNode* Root;	// Корень дерева
+	RBTreeNode* Nil;	// Фиктивный узел
+	int CountRotate;	// Количество поворотов
 
 	RBTreeNode* CreateNode(int key);
 	void RotateLeft(RBTreeNode* node);

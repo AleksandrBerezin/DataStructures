@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// Левый поворот
 AVLTreeNode* AVLTree::RotateLeft(AVLTreeNode* node)
 {
 	AVLTreeNode* newNode = node->Right;
@@ -17,6 +18,7 @@ AVLTreeNode* AVLTree::RotateLeft(AVLTreeNode* node)
 	return newNode;
 }
 
+// Правый поворот
 AVLTreeNode* AVLTree::RotateRight(AVLTreeNode* node)
 {
 	AVLTreeNode* newNode = node->Left;
@@ -30,6 +32,7 @@ AVLTreeNode* AVLTree::RotateRight(AVLTreeNode* node)
 	return newNode;
 }
 
+// Балансировка
 AVLTreeNode* AVLTree::Balance(AVLTreeNode* node)
 {
 	node->FixHeight();
@@ -56,9 +59,10 @@ AVLTreeNode* AVLTree::Balance(AVLTreeNode* node)
 		return RotateRight(node);
 	}
 
-	return node;
+	return node;	// Балансировка не нужна
 }
 
+// Вставка узла по ключу
 AVLTreeNode* AVLTree::Insert(AVLTreeNode* node, int key)
 {
 	if (node == nullptr)
@@ -77,6 +81,7 @@ AVLTreeNode* AVLTree::Insert(AVLTreeNode* node, int key)
 	}
 }
 
+// Поиск узла по ключу
 AVLTreeNode* AVLTree::Find(int key)
 {
 	AVLTreeNode* node = Root;
@@ -100,6 +105,7 @@ AVLTreeNode* AVLTree::Find(int key)
 	return node;
 }
 
+// Поиск узла с минимальным ключом
 AVLTreeNode* AVLTree::FindMin()
 {
 	if (Root == nullptr)
@@ -116,6 +122,7 @@ AVLTreeNode* AVLTree::FindMin()
 	return tmpNode;
 }
 
+// Удаление узла по ключу
 AVLTreeNode* AVLTree::Remove(AVLTreeNode* node, int key)
 {
 	if (node == nullptr)
@@ -132,25 +139,29 @@ AVLTreeNode* AVLTree::Remove(AVLTreeNode* node, int key)
 		node->Right = Remove(node->Right, key);
 		return Balance(node);
 	}
-	else
+	else	// node->Key = key
 	{
+		// Дочерних узлов нет
 		if (node->Left == nullptr && node->Right == nullptr)
 		{
 			delete node;
 			return nullptr;
 		}
+		// Только правый дочерний узел
 		else if (node->Left == nullptr)
 		{
 			AVLTreeNode* newNode = node->Right;
 			delete node;
 			return newNode;
 		}
+		// Только левый дочерний узел
 		else if (node->Right == nullptr)
 		{
 			AVLTreeNode* newNode = node->Left;
 			delete node;
 			return newNode;
 		}
+		// Два дочерних узла
 		else
 		{
 			AVLTreeNode* oldNode = node;
@@ -169,6 +180,7 @@ AVLTreeNode* AVLTree::Remove(AVLTreeNode* node, int key)
 	}
 }
 
+// Очистка памяти
 void AVLTree::Clear(AVLTreeNode* node)
 {
 	if (node == nullptr)
@@ -182,11 +194,13 @@ void AVLTree::Clear(AVLTreeNode* node)
 	delete node;
 }
 
+// Проверка: пустое дерево(true) или нет(false)
 bool AVLTree::IsEmpty()
 {
 	return Root == nullptr;
 }
 
+// Вывод дерева
 void Print(AVLTreeNode* node, int level)
 {
 	if (node != nullptr)

@@ -1,8 +1,8 @@
 #pragma once
 struct AVLTree
 {
-	AVLTreeNode* Root = nullptr;
-	int CountRotate = 0;
+	AVLTreeNode* Root = nullptr;	// Корень дерева
+	int CountRotate = 0;	// Количество поворотов
 
 	AVLTreeNode* RotateLeft(AVLTreeNode* node);
 	AVLTreeNode* RotateRight(AVLTreeNode* node);

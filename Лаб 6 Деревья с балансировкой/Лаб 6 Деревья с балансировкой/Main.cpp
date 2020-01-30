@@ -441,6 +441,7 @@ int main()
 
 }
 
+//Проверка, что вводимое число int
 int InputInt()
 {
 	int number = 0;

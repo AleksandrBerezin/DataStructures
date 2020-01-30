@@ -1,10 +1,10 @@
 #pragma once
 struct AVLTreeNode
 {
-	int Key;
-	unsigned char Height;
-	AVLTreeNode* Left;
-	AVLTreeNode* Right;
+	int Key;	// Ключ узла
+	unsigned char Height;	// Высота поддерева с корнем в данном узле
+	AVLTreeNode* Left;	// Указатель на левое поддерево
+	AVLTreeNode* Right;	// Указатель на правое поддерево
 
 	int BalanceFactor();
 	void FixHeight();
