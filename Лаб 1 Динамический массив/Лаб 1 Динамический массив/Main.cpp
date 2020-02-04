@@ -12,6 +12,7 @@ int main()
 	
 	DynamicArray* array = new DynamicArray();
 
+	//TODO: Naming
 	bool exit = false;
 
 	while (!exit)
@@ -45,12 +46,13 @@ int main()
 			}
 			case 2:
 			{
+					//TODO: Дубль
 				if (array == nullptr || array->Length == 0)
 				{
 					cout << "Массив слишком маленький.\n";
 					break;
 				}
-
+				//TODO: Дубль
 				if (array->Length == 0)
 				{
 					cout << "Массив слишком маленький.\n";
@@ -103,6 +105,7 @@ int main()
 				{
 					array = new DynamicArray();
 				}
+					//TODO: Дубль
 				if (array->Length == 0)
 				{
 					cout << "Массив слишком маленький\n";
@@ -119,6 +122,7 @@ int main()
 				break;
 			}
 			case 6:
+			//TODO: Дубль
 				if (array == nullptr || array->Length == 0)
 				{
 					cout << "Массив слишком маленький.\n";
@@ -130,6 +134,7 @@ int main()
 				break;
 			case 7:
 			{
+					//TODO: Дубль
 				if (array == nullptr || array->Length == 0)
 				{
 					cout << "Массив слишком маленький.\n";
@@ -154,6 +159,7 @@ int main()
 			}
 			case 8:
 			{
+					//TODO: Дубль
 				if (array == nullptr || array->Length == 0)
 				{
 					cout << "Массив слишком маленький.\n";
@@ -202,6 +208,7 @@ int main()
 //Проверка, что вводимое число int
 int Input()
 {
+	//TODO: Naming
 	int a = 0;
 
 	while (true)
