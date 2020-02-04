@@ -122,11 +122,11 @@ void RBTree::FixInsertion(RBTreeNode* node)
 		node->IsBlack = true;
 		return;
 	}
-
+	//TODO: Почему здесь?
 	RBTreeNode* parent;
 	RBTreeNode* grandpa;
 	RBTreeNode* uncle;
-
+	//TODO: Naming
 	while (node->Parent->IsBlack == false)	// Отец красный
 	{
 		parent = node->Parent;
@@ -141,7 +141,7 @@ void RBTree::FixInsertion(RBTreeNode* node)
 		if (parent == grandpa->Left)
 		{
 			uncle = grandpa->Right;
-
+			//TODO: Зачем эти комментарии?
 			if (uncle->IsBlack == false)	// Дядя красный
 			{
 				parent->IsBlack = true;
@@ -166,7 +166,7 @@ void RBTree::FixInsertion(RBTreeNode* node)
 		else
 		{
 			uncle = grandpa->Left;
-
+			//TODO: Зачем эти комментарии?
 			if (uncle->IsBlack == false)	// Дядя красный
 			{
 				parent->IsBlack = true;
@@ -224,6 +224,7 @@ RBTreeNode* RBTree::Find(int key)
 // Удаление узла по ключу
 void RBTree::Remove(int key)
 {
+	//TODO: Naming
 	RBTreeNode* node;	// Удаляем
 	RBTreeNode* newNode;	// Ставим на его место
 
@@ -274,6 +275,7 @@ void RBTree::Remove(int key)
 	newNode->Parent = node->Parent;
 	if (node->Parent != Nil)
 	{
+		//TODO: Formatting
 		node->Parent->Left == node ? node->Parent->Left = newNode :
 			node->Parent->Right = newNode;
 	}	
@@ -302,7 +304,7 @@ void RBTree::FixRemoving(RBTreeNode* node)
 	{
 		RBTreeNode* brother;
 		RBTreeNode* parent = node->Parent;
-
+		//TODO: Зачем эти комментарии?
 		if (node == parent->Left)	// Узел является левым ребенком
 		{
 			brother = parent->Right;

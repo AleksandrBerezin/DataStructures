@@ -37,6 +37,7 @@ AVLTreeNode* AVLTree::Balance(AVLTreeNode* node)
 {
 	node->FixHeight();
 
+	//TODO: Naming
 	int balenceFactor = node->BalanceFactor();
 
 	if (balenceFactor == -2)

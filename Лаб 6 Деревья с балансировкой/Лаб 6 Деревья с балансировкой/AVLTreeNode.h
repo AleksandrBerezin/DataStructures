@@ -1,6 +1,7 @@
 #pragma once
 struct AVLTreeNode
 {
+	//TODO: Зачем эти комментарии?
 	int Key;	// Ключ узла
 	unsigned char Height;	// Высота поддерева с корнем в данном узле
 	AVLTreeNode* Left;	// Указатель на левое поддерево

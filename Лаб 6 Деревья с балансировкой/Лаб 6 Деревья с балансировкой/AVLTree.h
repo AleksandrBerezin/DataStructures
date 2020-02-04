@@ -1,6 +1,7 @@
 #pragma once
 struct AVLTree
 {
+	//TODO: Зачем эти комментарии?
 	AVLTreeNode* Root = nullptr;	// Корень дерева
 	int CountRotate = 0;	// Количество поворотов
 

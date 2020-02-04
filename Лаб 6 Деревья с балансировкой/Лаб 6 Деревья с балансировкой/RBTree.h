@@ -1,6 +1,7 @@
 #pragma once
 struct RBTree
 {
+	//TODO: Зачем эти комментарии?
 	RBTreeNode* Root;	// Корень дерева
 	RBTreeNode* Nil;	// Фиктивный узел
 	int CountRotate;	// Количество поворотов

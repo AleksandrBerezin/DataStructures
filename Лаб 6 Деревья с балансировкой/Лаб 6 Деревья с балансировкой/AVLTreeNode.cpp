@@ -38,6 +38,7 @@ void AVLTreeNode::FixHeight()
 	}
 	else
 	{
+		//TODO: Formatting
 		Height = (Left->Height > Right->Height ? Left->Height :
 			Right->Height) + 1;
 	}

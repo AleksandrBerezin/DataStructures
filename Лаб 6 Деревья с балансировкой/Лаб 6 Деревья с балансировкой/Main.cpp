@@ -12,7 +12,7 @@ int InputInt();
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-
+	//TODO: Ответственность. Лучше разделить меню по файлам.
 	AVLTree* avlTree = new AVLTree;
 	RBTree* rbTree = new RBTree;
 
@@ -121,7 +121,7 @@ int main()
 
 							AVLTreeNode* node =
 								avlTree->Find(key);
-
+							//TODO: Formatting
 							cout << (node == nullptr ? "Такого элемента нет.\n"
 								: "Элемент найден.\n");
 
@@ -158,8 +158,9 @@ int main()
 							avlTree = new AVLTree();
 
 							cout << "Введите количество элементов дерева: \n";
+								//TODO: Naming
 							int n = InputInt();
-
+							//TODO: Дубль
 							clock_t begin = clock();
 							for (int i = 0; i < n; i++)
 							{
@@ -188,6 +189,7 @@ int main()
 							avlTree = new AVLTree();
 
 							cout << "Введите количество элементов дерева: \n";
+								//TODO: Naming
 							int n = InputInt();
 
 							for (int i = 0; i < n; i++)
@@ -195,7 +197,7 @@ int main()
 								avlTree->Root = avlTree->Insert(avlTree->Root, i);
 							}
 							avlTree->CountRotate = 0;
-							
+							//TODO: Дубль
 							clock_t begin = clock();
 							for (int i = 0; i < n; i++)
 							{
@@ -272,6 +274,7 @@ int main()
 						}
 						case 2:
 						{
+								//TODO: Дубль
 							if (rbTree == nullptr || rbTree->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
@@ -282,6 +285,7 @@ int main()
 							int value = InputInt();
 							cout << "\n";
 
+								//TODO: Почему здесь?
 							RBTreeNode* node;
 
 							do
@@ -303,6 +307,7 @@ int main()
 						}
 						case 3:
 						{
+								//TODO: Дубль
 							if (rbTree == nullptr || rbTree->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
@@ -316,6 +321,7 @@ int main()
 							RBTreeNode* node =
 								rbTree->Find(key);
 
+								//TODO: Formatting
 							cout << (node == rbTree->Nil ? "Такого элемента нет.\n"
 								: "Элемент найден.\n");
 
@@ -332,6 +338,7 @@ int main()
 							rbTree = nullptr;
 							break;
 						case 5:
+						//TODO: Дубль
 							if (rbTree ==  nullptr || rbTree->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
@@ -352,8 +359,9 @@ int main()
 							rbTree = new RBTree();
 
 							cout << "Введите количество элементов дерева: \n";
+								//TODO: Naming
 							int n = InputInt();
-
+							//TODO: Дубль
 							clock_t begin = clock();
 							for (int i = 0; i < n; i++)
 							{
@@ -382,6 +390,7 @@ int main()
 							rbTree = new RBTree();
 
 							cout << "Введите количество элементов дерева: \n";
+								//TODO: Naming
 							int n = InputInt();
 
 							for (int i = 0; i < n; i++)
