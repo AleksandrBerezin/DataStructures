@@ -3,6 +3,7 @@
 #include "Node.h"
 #include "List.h"
 
+//TODO: Не называйте решения по-русски
 using namespace std;
 
 int Input();
@@ -12,6 +13,7 @@ int main()
 	setlocale(LC_ALL, "Russian");
 
 	List* list = new List();
+	//TODO: Naming
 	bool exit = false;
 
 	while (!exit)
@@ -28,12 +30,13 @@ int main()
 			<< "9. Измерение времени для удаления.\n"
 			<< "10. Измерение времени для вставки.\n"
 			<< "0. Выход.\n\n";
-
+		//TODO: Naming
 		int number = Input();
 		switch (number)
 		{
 			case 1:
 			{
+					//TODO: Дубль
 				if (list == nullptr)
 				{
 					list = new List();
@@ -47,6 +50,7 @@ int main()
 			}
 			case 2:
 			{
+					//TODO: Дубль
 				if (list == nullptr || list->Length == 0)
 				{
 					cout << "Список пуст.\n";
@@ -69,6 +73,7 @@ int main()
 			}
 			case 3:
 			{
+					//TODO: Дубль
 				if (list == nullptr)
 				{
 					list = new List();
@@ -82,6 +87,7 @@ int main()
 			}
 			case 4:
 			{
+					//TODO: Дубль
 				if (list == nullptr)
 				{
 					list = new List();
@@ -96,6 +102,7 @@ int main()
 			}
 			case 5:
 			{
+					//TODO: Дубль
 				if (list == nullptr || list->Length == 0)
 				{
 					cout << "Список пуст.\n";
@@ -105,6 +112,7 @@ int main()
 				cout << "Введите индекс элемента:\n";
 				int index = Input();
 
+					//TODO: Дубль
 				while (index < 0 || index >= list->Length)
 				{
 					cout << "Элемента с таким индексом нет, "
@@ -121,22 +129,25 @@ int main()
 			}
 			case 6:
 			{
+					//TODO: Дубль
 				if (list == nullptr || list->Length == 0)
 				{
 					cout << "Список пуст.\n";
 					break;
 				}
 
+					//TODO: Дубль
 				cout << "Введите индекс элемента:\n";
 				int index = Input();
 
+					//TODO: Дубль
 				while (index < 0 || index >= list->Length)
 				{
 					cout << "Элемента с таким индексом нет, "
 						<< "попробуйте еще раз:\n";
 					index = Input();
 				}
-
+				//TODO: Дубль
 				cout << "Введите значение элемента:\n";
 				int value = Input();
 
@@ -145,6 +156,7 @@ int main()
 				break;
 			}
 			case 7:
+			//TODO: Дубль
 				if (list == nullptr || list->Length == 0)
 				{
 					cout << "Список пуст.\n";
@@ -156,12 +168,13 @@ int main()
 				break;
 			case 8:
 			{
+					//TODO: Дубль
 				if (list == nullptr || list->Length == 0)
 				{
 					cout << "Список пуст.\n";
 					break;
 				}
-
+				//TODO: Дубль
 				cout << "Введите значение элемента:\n";
 				int value = Input();
 
@@ -187,6 +200,7 @@ int main()
 				list = new List();
 
 				cout << "Введите количество элементов списка:\n";
+					//TODO: Naming
 				int n = Input();
 
 				for (int i = 0; i < n; i++)
@@ -194,7 +208,7 @@ int main()
 					list->Add(i);
 				}
 				int middle = list->Length / 2;
-
+				//TODO: Дубль
 				clock_t begin = clock();
 
 				list->Remove(middle);
@@ -216,6 +230,7 @@ int main()
 				list = new List();
 
 				cout << "Введите количество элементов списка:\n";
+					//TODO: Naming
 				int n = Input();
 
 				for (int i = 0; i < n; i++)
@@ -223,7 +238,7 @@ int main()
 					list->Add(i);
 				}
 				int middle = list->Length / 2;
-
+				//TODO: Дубль
 				clock_t begin = clock();
 
 				list->InsertAfter(middle, 1);

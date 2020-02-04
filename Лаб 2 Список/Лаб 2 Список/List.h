@@ -7,6 +7,7 @@ struct List
 
 	void Add(int value);
 	void Remove(int index);
+	//TODO: Naming
 	void Sort();
 	void InsertAfter(int index, int value);
 	void InsertBefore(int index, int value);
