@@ -1,6 +1,6 @@
 #pragma once
 struct Treap
-{
+{//TODO: Зачем эти комментарии?
 	TreapNode* Root = nullptr;	// Корень дерева
 	TreapNode* Find(int key);
 	void Split(TreapNode* node, int key, 

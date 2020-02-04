@@ -1,6 +1,7 @@
 #pragma once
 struct BinaryTree
 {
+	//TODO: Зачем эти комментарии?
 	BinaryTreeNode* Root = nullptr;	// Корень дерева
 	BinaryTreeNode* Find(int key);
 	BinaryTreeNode* FindMax();

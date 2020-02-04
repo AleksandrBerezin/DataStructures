@@ -12,9 +12,11 @@ int InputInt();
 int main()
 {
 	setlocale(LC_ALL, "Russian");
+	//TODO: Ответственности. Есть смысл разделить меню
 	BinaryTree* binaryTree = new BinaryTree();
 	Treap* treap = new Treap();
 
+	//TODO: Naming
 	bool exit = false;
 
 	while (!exit)
@@ -25,6 +27,7 @@ int main()
 			<< "0. Выход.\n\n";
 
 		int number = InputInt();
+		//TODO: Naming
 		bool back = false;
 		switch (number)
 		{
@@ -62,6 +65,7 @@ int main()
 						}
 						case 2:
 						{
+								//TODO: Дубль
 							if (binaryTree == nullptr || binaryTree->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
@@ -78,6 +82,7 @@ int main()
 						}
 						case 3:
 						{
+								//TODO: Дубль
 							if (binaryTree == nullptr || binaryTree->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
@@ -89,7 +94,7 @@ int main()
 							cout << "\n";
 
 							BinaryTreeNode* node = binaryTree->Find(key);
-
+							//TODO: Formatting
 							cout << (node == nullptr ?  "Такого элемента нет.\n"
 								: "Элемент найден.\n");
 
@@ -97,6 +102,7 @@ int main()
 						}
 						case 4:
 						{
+								//TODO: Дубль
 							if (binaryTree == nullptr || binaryTree->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
@@ -117,12 +123,14 @@ int main()
 						}
 						case 5:
 						{
+								//TODO: Дубль
 							if (binaryTree == nullptr || binaryTree->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
 								break;
 							}
 
+								//TODO: RSDN
 							BinaryTreeNode* min;
 							min = binaryTree->FindMin();
 
@@ -147,6 +155,7 @@ int main()
 							binaryTree = nullptr;
 							break;
 						case 7:
+						//TODO: Дубль
 							if (binaryTree == nullptr || binaryTree->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
@@ -244,7 +253,7 @@ int main()
 								}
 							} 
 							while (node != nullptr);
-
+							//TODO: nullptr
 							srand(time(0));
 							int priority = rand() % 100;
 
@@ -254,6 +263,7 @@ int main()
 						}
 						case 3:
 						{
+								//TODO: Дубль
 							if (treap == nullptr || treap->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
@@ -270,6 +280,7 @@ int main()
 						}
 						case 4:
 						{
+								//TODO: Дубль
 							if (treap == nullptr || treap->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
@@ -286,6 +297,7 @@ int main()
 						}
 						case 5:
 						{
+								//TODO: Дубль
 							if (treap == nullptr || treap->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
@@ -320,6 +332,7 @@ int main()
 							treap = nullptr;
 							break;
 						case 7:
+						//TODO: Дубль
 							if (treap == nullptr || treap->IsEmpty())
 							{
 								cout << "Дерево пустое.\n";
