@@ -41,6 +41,7 @@ int Stack::Pop()
 // Изменение размера стека
 void Stack::Resize()
 {
+	//TODO: Вынести в именованную константу
 	Size = Size * 1.5;
 }
 
@@ -54,6 +55,7 @@ bool Stack::IsEmpty()
 void Stack::Delete()
 {
 	Node* current = Top;
+	//TODO: Почему здесь?
 	Node* node;
 	while (current != nullptr)
 	{

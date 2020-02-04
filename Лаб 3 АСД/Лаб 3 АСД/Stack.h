@@ -3,6 +3,7 @@
 
 struct Stack
 {
+	//TODO: Naming
 	Node* Top; // Верхний элемент стека
 	int Size; // Размер стека
 	int Length; // Количество элементов

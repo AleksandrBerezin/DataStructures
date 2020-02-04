@@ -2,6 +2,7 @@
 struct RingBuffer
 {
 	int* Buffer;
+	//TODO: naming
 	int Read; // Индекс, с которого идет чтение
 	int Write; // Индекс, с которого идет запись
 	int Size; // Размер буфера

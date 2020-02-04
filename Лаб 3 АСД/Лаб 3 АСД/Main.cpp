@@ -12,12 +12,13 @@ int Input();
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-
+	//TODO: Ответственности(есть смысл разделить меню на разные файлы)
 	Stack* stack = new Stack;
+	//TODO: RSDN
 	RingBuffer* ringBuf = new RingBuffer;
 	RingBufferQueue* ringQueue = new RingBufferQueue;
 	TwoStackQueue* stackQueue = new TwoStackQueue;
-	
+	//TODO: Naming
 	bool exit = false;
 
 	while (!exit)
@@ -30,6 +31,7 @@ int main()
 			<< "0. Выход.\n\n";
 
 		int number = Input();
+		//TODO: Naming
 		bool back = false;
 		switch (number)
 		{
@@ -50,6 +52,7 @@ int main()
 					{
 						case 1:
 						{
+								
 							if (stack == nullptr)
 							{
 								stack = new Stack();
@@ -69,6 +72,7 @@ int main()
 						}
 						case 2:
 						{
+								//TODO: Дубль
 							if (stack == nullptr || stack->IsEmpty())
 							{
 								cout << "Стек пуст.\n";
@@ -90,6 +94,7 @@ int main()
 							stack->Resize();
 							break;
 						case 4:
+						//TODO: Дубль
 							if (stack == nullptr)
 							{
 								break;
@@ -100,6 +105,7 @@ int main()
 							stack = nullptr;
 							break;
 						case 5:
+						//TODO: Дубль
 							if (stack == nullptr)
 							{
 								cout << "Стек пуст.\n";

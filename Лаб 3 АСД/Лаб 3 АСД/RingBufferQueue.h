@@ -1,6 +1,7 @@
 #pragma once
 struct RingBufferQueue
 {
+	//TODO: Naming
 	RingBuffer* RingBuf;
 
 	void Enqueue(int element);

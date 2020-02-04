@@ -8,10 +8,12 @@ using namespace std;
 void RingBuffer::Push(int element)
 {
 	Buffer[Write] = element;
+	//TODO: Дубль
 	Write = (Write + 1) % Size;
 	
 	if (Length == Size)
 	{
+		//TODO: Дубль
 		Read = (Read + 1) % Size;
 	}
 	else
@@ -24,6 +26,7 @@ void RingBuffer::Push(int element)
 int RingBuffer::Pop()
 {
 	int element = Buffer[Read];
+	//TODO: Дубль
 	Read = (Read + 1) % Size;
 	Length--;
 	
@@ -33,11 +36,13 @@ int RingBuffer::Pop()
 // Изменение размера буфера
 void RingBuffer::Resize()
 {
+	//TODO: Вынести в именованную константу
 	int* newBuffer = new int[Size * 1.5];
 
 	for (int i = 0; i < Length; i++)
 	{
 		newBuffer[i] = Buffer[Read];
+		//TODO: Дубль
 		Read = (Read + 1) % Size;
 	}
 
