@@ -18,18 +18,22 @@ int main()
 	Map* map = new Map();
 	HashTable* table = new HashTable();
 
+	//TODO: Naming
 	bool exit = false;
 
+	//TODO: ?
 	int number = 0;
 
 	while (!exit)
 	{
+		//TODO: Ответственности. Есть смысл разнести меню для ХТ и для словаря
 		cout << "\nВыберите структуру данных для работы:\n";
 		cout << "1. Словарь.\n"
 			<< "2. Хэш-таблица.\n"
 			<< "0. Выход.\n\n";
 
 		int number = InputInt();
+		//TODO: Naming
 		bool back = false;
 		switch (number)
 		{
@@ -54,7 +58,7 @@ int main()
 							{
 								map = new Map();
 							}
-
+							//TODO: RSDN
 							string key;
 							string value;
 
@@ -69,12 +73,13 @@ int main()
 						}
 						case 2:
 						{
+								//TODO: Дубль
 							if (map == nullptr || map->IsEmpty())
 							{
 								cout << "Словарь пуст.\n";
 								break;
 							}
-
+							//TODO: RSDN
 							string key;
 
 							cout << "Введите ключ: ";
@@ -86,12 +91,13 @@ int main()
 						}
 						case 3:
 						{
+								//TODO: Дубль
 							if (map == nullptr || map->IsEmpty())
 							{
 								cout << "Словарь пуст.\n";
 								break;
 							}
-
+							//TODO: RSDN
 							string key;
 							string value;
 
@@ -125,6 +131,7 @@ int main()
 						}
 						case 5:
 						{
+								//TODO: Дубль
 							if (map == nullptr)
 							{
 								cout << "Словарь пуст.\n";
@@ -167,7 +174,7 @@ int main()
 							{
 								table = new HashTable();
 							}
-
+							//TODO: RSDN
 							string key;
 							string value;
 
@@ -182,12 +189,13 @@ int main()
 						}
 						case 2:
 						{
+								//TODO: Дубль
 							if (table == nullptr || table->IsEmpty())
 							{
 								cout << "Словарь пуст.\n";
 								break;
 							}
-
+							//TODO: RSDN
 							string key;
 
 							cout << "Введите ключ: ";
@@ -199,12 +207,13 @@ int main()
 						}
 						case 3:
 						{
+								//TODO: Дубль
 							if (table == nullptr || table->IsEmpty())
 							{
 								cout << "Словарь пуст.\n";
 								break;
 							}
-
+							//TODO: RSDN
 							string key;
 							string value;
 
@@ -238,6 +247,7 @@ int main()
 						}
 						case 5:
 						{
+								//TODO: Дубль
 							if (table == nullptr)
 							{
 								cout << "Словарь пуст.\n";

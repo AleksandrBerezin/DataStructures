@@ -12,6 +12,7 @@ void HashTable::Init()
 	for (int i = 0; i < Size; i++)
 	{
 		Array[i] = *new Node;
+		//TODO: Вынести в инициализацию?
 		Array[i].Key = "";
 		Array[i].Value = "";
 		Array[i].Next = nullptr;
@@ -62,6 +63,7 @@ void HashTable::Remove(string key)
 		{
 			if (current->Next == nullptr)
 			{
+				//TODO: Зачем эти комментарии?
 				if (prev != nullptr)	// Есть только предыдущий элемент
 				{
 					prev->Next = nullptr;
@@ -74,6 +76,7 @@ void HashTable::Remove(string key)
 			}
 			else
 			{
+				//TODO: Зачем эти комментарии?
 				if (prev != nullptr)	// Есть предыдущий и последующий
 				{
 					prev->Next = current->Next;
@@ -120,11 +123,13 @@ string HashTable::Find(string key)
 int HashTable::Hash(string key)
 {
 	int hash = 0;
+	//TODO: Naming
 	int n = 0;	// Показатель степени
 	int arg = Size - 1;
 
 	for (int i = 0; i < key.length(); i++)
 	{
+		//TODO: Зачем эти комментарии?
 		int a = pow(arg, n);	// Возведение arg в степень n
 		hash = (hash + int(key[i]) * a) % Size;
 		n++;
@@ -163,6 +168,7 @@ void HashTable::Collision(int hash, string key, string value)
 void HashTable::Rehashing()
 {
 	int oldSize = Size;
+	//TODO: Вынести в именованную константу
 	Size = Size * 1.5;
 	Length = 0;
 

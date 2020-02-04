@@ -3,6 +3,7 @@ using std::string;
 
 struct Map
 {
+	//TODO: Naming
 	HashTable* Table;
 
 	void Add(string key, string value);
