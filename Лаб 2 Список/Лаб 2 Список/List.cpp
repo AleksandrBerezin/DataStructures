@@ -71,7 +71,7 @@ void List::Remove(int index)
 }
 
 // Сортировка списка
-void List::Sort()
+void List::InsertionSort()
 {
 	List* newList = new List();
 	Node* current = Head;
@@ -260,10 +260,9 @@ Node* List::SearchNode(int index)
 void List::Delete()
 {
 	Node* current = Head;
-	Node* node;
 	while (current != nullptr)
 	{
-		node = current;
+		Node* node = current;
 		current = current->Next;
 		delete node;
 	}
@@ -273,10 +272,16 @@ void List::Delete()
 	Length = 0;
 }
 
+// Проверка: пустой список(true) или нет(false)
+bool List::IsEmpty()
+{
+	return Length == 0;
+}
+
 // Вывод списка на экран
 void Print(List* list)
 {
-	if (list->Length == 0)
+	if (list->IsEmpty())
 	{
 		cout << "Список пуст.\n";
 		return;

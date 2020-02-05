@@ -7,16 +7,22 @@
 using namespace std;
 
 int Input();
+bool IsListNotCreateOrEmpty(List* list);
+void CheckListOnCreate(List* list);
+int InputIndex();
+int InputValue();
+void FindCorrectIndex(List* list, int* index);
+void ShowFunctionRunTime(clock_t begin);
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 
 	List* list = new List();
-	//TODO: Naming
-	bool exit = false;
+	//TODO: Naming(Done)
+	bool isExit = false;
 
-	while (!exit)
+	while (!isExit)
 	{
 		cout << "\nВыберите вариант:\n";
 		cout << "1. Добавление элемента.\n"
@@ -30,30 +36,24 @@ int main()
 			<< "9. Измерение времени для удаления.\n"
 			<< "10. Измерение времени для вставки.\n"
 			<< "0. Выход.\n\n";
-		//TODO: Naming
-		int number = Input();
-		switch (number)
+
+		switch (Input())
 		{
 			case 1:
 			{
-					//TODO: Дубль
-				if (list == nullptr)
-				{
-					list = new List();
-				}
+					//TODO: Дубль(Done)
+				CheckListOnCreate(list);
 
 				cout << "Введите значение элемента:\n";
-				int value = Input();
-				list->Add(value);
+				list->Add(Input());
 				Print(list);
 				break;
 			}
 			case 2:
 			{
-					//TODO: Дубль
-				if (list == nullptr || list->Length == 0)
+					//TODO: Дубль(Done)
+				if (IsListNotCreateOrEmpty(list))
 				{
-					cout << "Список пуст.\n";
 					break;
 				}
 
@@ -73,55 +73,38 @@ int main()
 			}
 			case 3:
 			{
-					//TODO: Дубль
-				if (list == nullptr)
-				{
-					list = new List();
-				}
+					//TODO: Дубль(Done)
+				CheckListOnCreate(list);
 
 				cout << "Введите значение элемента:\n";
-				int value = Input();
-				list->InsertBefore(0, value);
+				list->InsertBefore(0, Input());
 				Print(list);
 				break;
 			}
 			case 4:
 			{
-					//TODO: Дубль
-				if (list == nullptr)
-				{
-					list = new List();
-				}
+					//TODO: Дубль(Done)
+				CheckListOnCreate(list);
 
 				cout << "Введите значение элемента:\n";
-				int value = Input();
-
-				list->InsertAfter(list->Length - 1, value);
+				list->InsertAfter(list->Length - 1, Input());
 				Print(list);
 				break;
 			}
 			case 5:
 			{
-					//TODO: Дубль
-				if (list == nullptr || list->Length == 0)
+					//TODO: Дубль(Done)
+				if (IsListNotCreateOrEmpty(list))
 				{
-					cout << "Список пуст.\n";
 					break;
 				}
 
-				cout << "Введите индекс элемента:\n";
-				int index = Input();
+				int index = InputIndex();
 
-					//TODO: Дубль
-				while (index < 0 || index >= list->Length)
-				{
-					cout << "Элемента с таким индексом нет, "
-						<< "попробуйте еще раз:\n";
-					index = Input();
-				}
+					//TODO: Дубль(Done)
+				FindCorrectIndex(list, &index);
 
-				cout << "Введите значение элемента:\n";
-				int value = Input();
+				int value = InputValue();
 
 				list->InsertAfter(index, value);
 				Print(list);
@@ -129,56 +112,47 @@ int main()
 			}
 			case 6:
 			{
-					//TODO: Дубль
-				if (list == nullptr || list->Length == 0)
+					//TODO: Дубль(Done)
+				if (IsListNotCreateOrEmpty(list))
 				{
-					cout << "Список пуст.\n";
 					break;
 				}
 
-					//TODO: Дубль
-				cout << "Введите индекс элемента:\n";
-				int index = Input();
+					//TODO: Дубль(Done)
+				int index = InputIndex();
 
-					//TODO: Дубль
-				while (index < 0 || index >= list->Length)
-				{
-					cout << "Элемента с таким индексом нет, "
-						<< "попробуйте еще раз:\n";
-					index = Input();
-				}
-				//TODO: Дубль
-				cout << "Введите значение элемента:\n";
-				int value = Input();
+					//TODO: Дубль(Done)
+				FindCorrectIndex(list, &index);
+				//TODO: Дубль(Done)
+				int value = InputValue();
 
 				list->InsertBefore(index, value);
 				Print(list);
 				break;
 			}
 			case 7:
-			//TODO: Дубль
-				if (list == nullptr || list->Length == 0)
+			{
+				//TODO: Дубль(Done)
+				if (IsListNotCreateOrEmpty(list))
 				{
-					cout << "Список пуст.\n";
 					break;
 				}
 
-				list->Sort();
+				list->InsertionSort();
 				Print(list);
 				break;
+			}
 			case 8:
 			{
-					//TODO: Дубль
-				if (list == nullptr || list->Length == 0)
+					//TODO: Дубль(Done)
+				if (IsListNotCreateOrEmpty(list))
 				{
-					cout << "Список пуст.\n";
 					break;
 				}
-				//TODO: Дубль
-				cout << "Введите значение элемента:\n";
-				int value = Input();
 
-				int index = list->Search(value);
+				cout << "Введите значение элемента:\n";
+				int index = list->Search(Input());
+
 				if (index == -1)
 				{
 					cout << "Такого элемента нет.\n";
@@ -200,22 +174,20 @@ int main()
 				list = new List();
 
 				cout << "Введите количество элементов списка:\n";
-					//TODO: Naming
-				int n = Input();
+					//TODO: Naming(Done)
+				int count = Input();
 
-				for (int i = 0; i < n; i++)
+				for (int i = 0; i < count; i++)
 				{
 					list->Add(i);
 				}
 				int middle = list->Length / 2;
-				//TODO: Дубль
+				//TODO: Дубль(Done)
 				clock_t begin = clock();
 
 				list->Remove(middle);
 
-				clock_t end = clock();
-				double seconds = double(end - begin) / CLOCKS_PER_SEC;
-				cout << "The time is " << seconds << " seconds.\n";
+				ShowFunctionRunTime(begin);
 				list->Delete();
 				break;
 			}
@@ -231,25 +203,24 @@ int main()
 
 				cout << "Введите количество элементов списка:\n";
 					//TODO: Naming
-				int n = Input();
+				int count = Input();
 
-				for (int i = 0; i < n; i++)
+				for (int i = 0; i < count; i++)
 				{
 					list->Add(i);
 				}
 				int middle = list->Length / 2;
-				//TODO: Дубль
+				//TODO: Дубль(Done)
 				clock_t begin = clock();
 
 				list->InsertAfter(middle, 1);
 
-				clock_t end = clock();
-				double seconds = double(end - begin) / CLOCKS_PER_SEC;
-				cout << "The time is " << seconds << " seconds.\n";
+				ShowFunctionRunTime(begin);
 				list->Delete();
 				break;
 			}
 			case 0:
+			{
 				if (list != nullptr)
 				{
 					list->Delete();
@@ -257,11 +228,14 @@ int main()
 					list = nullptr;
 				}
 
-				exit = true;
+				isExit = true;
 				break;
+			}
 			default:
+			{
 				cout << "Выбран неверный вариант, попробуйте еще раз.\n";
 				break;
+			}
 		}
 	}
 }
@@ -287,4 +261,55 @@ int Input()
 	}
 
 	return input;
+}
+
+//Проверка, что список не создан или пуст
+bool IsListNotCreateOrEmpty(List* list)
+{
+	if (list == nullptr || list->IsEmpty())
+	{
+		cout << "Список пуст.\n";
+		return true;
+	}
+
+	return false;
+}
+
+//Проверка, если список ещё не создан, то создается
+void CheckListOnCreate(List* list)
+{
+	if (list == nullptr)
+	{
+		list = new List();
+	}
+}
+
+int InputIndex()
+{
+	cout << "Введите индекс элемента:\n";
+	return Input();
+}
+
+int InputValue()
+{
+	cout << "Введите значение элемента:\n";
+	return Input();
+}
+
+void FindCorrectIndex(List* list, int* index)
+{
+	while (*index < 0 || *index >= list->Length)
+	{
+		cout << "Элемента с таким индексом нет, "
+			<< "попробуйте еще раз:\n";
+		*index = Input();
+	}
+}
+
+//Вычисление времени работы функции
+void ShowFunctionRunTime(clock_t begin)
+{
+	clock_t end = clock();
+	double seconds = double(end - begin) / CLOCKS_PER_SEC;
+	cout << "The time is " << seconds << " seconds.\n";
 }
