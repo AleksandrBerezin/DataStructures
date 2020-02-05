@@ -4,6 +4,8 @@
 
 using namespace std;
 
+const double growthFactor = 1.5;
+
 //Добавление элемента в массив
 void DynamicArray::Add(int element)
 {
@@ -21,10 +23,10 @@ void DynamicArray::Add(int element)
 //Изменение размера памяти для массива
 void DynamicArray::Resize()
 {
-	//TODO: Числовые константы лучше поименовать
+	//TODO: Числовые константы лучше поименовать(Done)
 	if (Length >= Capacity)
 	{
-		Capacity = Length * 1.5;
+		Capacity = Length * growthFactor;
 	}
 	else if (Length > 4)
 	{
@@ -46,7 +48,7 @@ void DynamicArray::Resize()
 }
 
 //Сортировка методом вставок
-void DynamicArray::Sort()
+void DynamicArray::InsertionSort()
 {
 	for (int i = 0; i < Length; i++)
 	{
@@ -113,12 +115,11 @@ int DynamicArray::BinarySearch(int element)
 {
 	int first = 0;
 	int last = Length;
-	//TODO: Почему здесь?
-	int middle;
+	//TODO: Почему здесь?(Done)
 
 	while (first < last)
 	{
-		middle = (first + last) / 2;
+		int middle = (first + last) / 2;
 		if (element <= Array[middle])
 		{
 			last = middle;
@@ -139,9 +140,16 @@ int DynamicArray::BinarySearch(int element)
 	}
 }
 
+// Проверка: пустой массив(true) или нет(false)
+bool DynamicArray::IsEmpty()
+{
+	return Length == 0;
+}
+
 //Вывод массива на экран
-//TODO: RSDN
-void Print(DynamicArray* array) {
+//TODO: RSDN(Done)
+void Print(DynamicArray* array) 
+{
 	cout << "\nПолученный массив: ";
 	for (int i = 0; i < array->Length; i++)
 	{

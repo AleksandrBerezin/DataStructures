@@ -5,6 +5,9 @@
 using namespace std;
 
 int Input();
+bool IsArrayNotCreateOrEmpty(DynamicArray* array);
+bool IsArrayEmpty(DynamicArray* array);
+void CheckArrayOnCreate(DynamicArray* array);
 
 int main()
 {
@@ -12,10 +15,10 @@ int main()
 	
 	DynamicArray* array = new DynamicArray();
 
-	//TODO: Naming
-	bool exit = false;
+	//TODO: Naming(Done)
+	bool isExit = false;
 
-	while (!exit)
+	while (!isExit)
 	{
 		cout << "\nВыберите вариант:\n";
 		cout << "1. Добавление элемента в массив.\n"
@@ -28,34 +31,27 @@ int main()
 			<< "8. Бинарный поиск элемента в массиве.\n"
 			<< "0. Выход.\n\n";
 		
-		int number = Input();
-		switch (number)
+		switch (Input())
 		{
 			case 1:
 			{
-				if (array == nullptr)
-				{
-					array = new DynamicArray();
-				}
+				CheckArrayOnCreate(array);
 
 				cout << "Введите значение элемента:\n";
-				int element = Input();
-				array->Add(element);
+				array->Add(Input());
 				Print(array);
 				break;
 			}
 			case 2:
 			{
-					//TODO: Дубль
-				if (array == nullptr || array->Length == 0)
+					//TODO: Дубль(Done)
+				if (IsArrayNotCreateOrEmpty(array))
 				{
-					cout << "Массив слишком маленький.\n";
 					break;
 				}
-				//TODO: Дубль
-				if (array->Length == 0)
+				//TODO: Дубль(Done)
+				if (IsArrayEmpty(array))
 				{
-					cout << "Массив слишком маленький.\n";
 					break;
 				}
 
@@ -75,40 +71,28 @@ int main()
 			}
 			case 3:
 			{
-				if (array == nullptr)
-				{
-					array = new DynamicArray();
-				}
+				CheckArrayOnCreate(array);
 
 				cout << "Введите значение элемента:\n";
-				int element = Input();
-				array->Insert(element, 0);
+				array->Insert(Input(), 0);
 				Print(array);
 				break;
 			}
 			case 4:
 			{
-				if (array == nullptr)
-				{
-					array = new DynamicArray();
-				}
+				CheckArrayOnCreate(array);
 
 				cout << "Введите значение элемента:\n";
-				int element = Input();
-				array->Insert(element, array->Length);
+				array->Insert(Input(), array->Length);
 				Print(array);
 				break;
 			}
 			case 5:
 			{
-				if (array == nullptr)
+				CheckArrayOnCreate(array);
+					//TODO: Дубль(Done)
+				if (IsArrayEmpty(array))
 				{
-					array = new DynamicArray();
-				}
-					//TODO: Дубль
-				if (array->Length == 0)
-				{
-					cout << "Массив слишком маленький\n";
 					break;
 				}
 
@@ -122,28 +106,27 @@ int main()
 				break;
 			}
 			case 6:
-			//TODO: Дубль
-				if (array == nullptr || array->Length == 0)
+			{
+				//TODO: Дубль(Done)
+				if (IsArrayNotCreateOrEmpty(array))
 				{
-					cout << "Массив слишком маленький.\n";
 					break;
 				}
-				
-				array->Sort();
+
+				array->InsertionSort();
 				Print(array);
 				break;
+			}
 			case 7:
 			{
-					//TODO: Дубль
-				if (array == nullptr || array->Length == 0)
+					//TODO: Дубль(Done)
+				if (IsArrayNotCreateOrEmpty(array))
 				{
-					cout << "Массив слишком маленький.\n";
 					break;
 				}
 
 				cout << "Введите элемент, который нужно найти:\n";
-				int element = Input();
-				int index = array->LineSearch(element);
+				int index = array->LineSearch(Input());
 				
 				if (index != -1)
 				{
@@ -159,10 +142,9 @@ int main()
 			}
 			case 8:
 			{
-					//TODO: Дубль
-				if (array == nullptr || array->Length == 0)
+					//TODO: Дубль(Done)
+				if (IsArrayNotCreateOrEmpty(array))
 				{
-					cout << "Массив слишком маленький.\n";
 					break;
 				}
 				if (!array->IsSorted)
@@ -172,9 +154,8 @@ int main()
 				}
 
 				cout << "Введите элемент, который нужно найти:\n";
-				int element = Input();
+				int index = array->BinarySearch(Input());
 
-				int index = array->BinarySearch(element);
 				if (index != -1)
 				{
 					cout << "Элемент находится под индексом "
@@ -188,17 +169,21 @@ int main()
 				break;
 			}
 			case 0:
+			{
 				if (array == nullptr)
 				{
 					delete[] array->Array;
 					delete array;
 					array = nullptr;
 				}
-				exit = true;
+				isExit = true;
 				break;
+			}
 			default:
+			{
 				cout << "Выбран неверный вариант, попробуйте еще раз.\n";
 				break;
+			}
 		}
 	}
 
@@ -208,12 +193,12 @@ int main()
 //Проверка, что вводимое число int
 int Input()
 {
-	//TODO: Naming
-	int a = 0;
+	//TODO: Naming()
+	int input = 0;
 
 	while (true)
 	{
-		cin >> a;
+		cin >> input;
 		if (cin.fail())
 		{
 			cin.clear();
@@ -226,5 +211,38 @@ int Input()
 		}
 	}
 
-	return a;
+	return input;
+}
+
+//Проверка, что массив не создан или пуст
+bool IsArrayNotCreateOrEmpty(DynamicArray* array)
+{
+	if (array == nullptr || array->IsEmpty())
+	{
+		cout << "Массив слишком маленький.\n";
+		return true;
+	}
+
+	return false;
+}
+
+//Проверка, что массив пуст
+bool IsArrayEmpty(DynamicArray* array)
+{
+	if (array->IsEmpty())
+	{
+		cout << "Массив слишком маленький.\n";
+		return true;
+	}
+
+	return false;
+}
+
+//Проверка, если массив ещё не создан, то создается
+void CheckArrayOnCreate(DynamicArray* array)
+{
+	if (array == nullptr)
+	{
+		array = new DynamicArray();
+	}
 }

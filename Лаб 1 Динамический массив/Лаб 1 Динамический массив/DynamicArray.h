@@ -7,12 +7,13 @@ struct DynamicArray
 
 	void Add(int element);
 	void Resize();
-	//TODO: Naming
-	void Sort();
+	//TODO: Naming(Done)
+	void InsertionSort();
 	void Insert(int element, int index);
 	void Delete(int index);
 	int LineSearch(int element);
 	int BinarySearch(int element);
+	bool IsEmpty();
 
 	bool IsSorted;
 
