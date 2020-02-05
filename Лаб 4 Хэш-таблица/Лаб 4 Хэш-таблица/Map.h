@@ -1,21 +1,23 @@
 #pragma once
+#include "HashTable.h"
+
 using std::string;
 
 struct Map
 {
-	//TODO: Naming
-	HashTable* Table;
+	//TODO: Naming(Done)
+	HashTable* InternalHashTable;
 
-	void Add(string key, string value);
-	void Remove(string key);
-	string Find(string key);
+	void Add(string* key, string* value);
+	void Remove(string* key);
+	string Find(string* key);
 	void Delete();
-	bool Contains(string key);
+	bool Contains(string* key);
 	bool IsEmpty();
 
 	Map()
 	{
-		Table = new HashTable();
+		InternalHashTable = new HashTable();
 	}
 };
 

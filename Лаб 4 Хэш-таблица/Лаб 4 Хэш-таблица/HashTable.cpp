@@ -6,84 +6,82 @@
 using namespace std;
 using std::string;
 
+const int fillFactor = 1;	// Коэффициент заполнения хеш таблицы
+const double growthFactor = 1.5;
+
 // Инициализация элементов массива
 void HashTable::Init()
 {
 	for (int i = 0; i < Size; i++)
 	{
-		Array[i] = *new Node;
-		//TODO: Вынести в инициализацию?
-		Array[i].Key = "";
-		Array[i].Value = "";
-		Array[i].Next = nullptr;
+		KeyValueArray[i] = *new Node;
 	}
 }
 
 // Добавление в таблицу набора key-value
-void HashTable::Add(string key, string value)
+void HashTable::Add(string* key, string* value)
 {
 	// Если коффициент заполнения таблицы >= 1
 	// вызываем функцию перехеширования
-	if (double(Length) / double(Size) >= 1)
+	if (double(Length) / double(Size) >= fillFactor)
 	{
 		Rehashing();
 	}
 
-	int hash = Hash(key);
+	int hash = HashCalculate(key);
 
-	if (Array[hash].Key.empty())
+	if (KeyValueArray[hash].Key.empty())
 	{
-		Array[hash].Key = key;
-		Array[hash].Value = value;
+		KeyValueArray[hash].Key = *key;
+		KeyValueArray[hash].Value = *value;
 		Length++;
 	}
 	else
 	{
-		Collision(hash, key, value);
+		CollisionResolution(hash, key, value);
 	}
 }
 
 // Удаление из таблицы набора key-value
-void HashTable::Remove(string key)
+void HashTable::Remove(string* key)
 {
-	int hash = Hash(key);
+	int hash = HashCalculate(key);
 
-	if (Array[hash].Key.empty())
+	if (KeyValueArray[hash].Key.empty())
 	{
 		cout << "Элемента с таким ключом нет.\n";
 		return;
 	}
 	
-	Node* current = &Array[hash];
-	Node* prev = nullptr;
+	Node* current = &KeyValueArray[hash];
 
 	while (current != nullptr)
 	{
-		if (current->Key == key)
+		Node* prev = nullptr;
+
+		if (current->Key == *key)
 		{
 			if (current->Next == nullptr)
 			{
-				//TODO: Зачем эти комментарии?
-				if (prev != nullptr)	// Есть только предыдущий элемент
+				if (prev != nullptr)
 				{
 					prev->Next = nullptr;
 				}
-				else	// Ячейка пустая
+				else
 				{
-					Array[hash].Key = "";
-					Array[hash].Value = "";
+					KeyValueArray[hash].Key = "";
+					KeyValueArray[hash].Value = "";
 				}
 			}
 			else
 			{
-				//TODO: Зачем эти комментарии?
-				if (prev != nullptr)	// Есть предыдущий и последующий
+				if (prev != nullptr)
 				{
 					prev->Next = current->Next;
 				}
-				else	// Есть только последующий элемент
+				else
 				{
-					Array[hash] = *current->Next;
+					KeyValueArray[hash] = *current->Next;
 				}
 			}
 
@@ -99,14 +97,14 @@ void HashTable::Remove(string key)
 }
 
 // Поиск value по key
-string HashTable::Find(string key)
+string HashTable::Find(string* key)
 {
-	int hash = Hash(key);
-	Node* current = &Array[hash];
+	int hash = HashCalculate(key);
+	Node* current = &KeyValueArray[hash];
 
 	while (current != nullptr)
 	{
-		if (current->Key == key)
+		if (current->Key == *key)
 		{
 			return current->Value;
 		}
@@ -120,34 +118,33 @@ string HashTable::Find(string key)
 // h(k) = (s0 * a^0 + s1 * a^1 + ... s(n-1) * a^(n-1) +sn * a ^ n) % m
 // a и m - взаимно простые
 // sn - символ под индексом n, m - размер таблицы
-int HashTable::Hash(string key)
+int HashTable::HashCalculate(string* key)
 {
 	int hash = 0;
-	//TODO: Naming
-	int n = 0;	// Показатель степени
+	//TODO: Naming(Done)
+	int exponent = 0;
 	int arg = Size - 1;
 
-	for (int i = 0; i < key.length(); i++)
+	for (int i = 0; i < (*key).length(); i++)
 	{
-		//TODO: Зачем эти комментарии?
-		int a = pow(arg, n);	// Возведение arg в степень n
-		hash = (hash + int(key[i]) * a) % Size;
-		n++;
+		int num = pow(arg, exponent);
+		hash = (hash + int(&(key[i])) * num) % Size;
+		exponent++;
 	}
 
 	return hash;
 }
 
 // Функция разрешения коллизий методом цепочек
-void HashTable::Collision(int hash, string key, string value)
+void HashTable::CollisionResolution(int hash, string* key, string* value)
 {
-	Node* current = &Array[hash];
+	Node* current = &KeyValueArray[hash];
 	Node* prev = nullptr;
 
 	while (current != nullptr)
 	{
 		// Запрет на дублирование пар key-value
-		if (current->Key == key && current->Value == value)
+		if (current->Key == *key && current->Value == *value)
 		{
 			return;
 		}
@@ -157,8 +154,8 @@ void HashTable::Collision(int hash, string key, string value)
 	}
 
 	current = new Node;
-	current->Key = key;
-	current->Value = value;
+	current->Key = *key;
+	current->Value = *value;
 	current->Next = nullptr;
 	prev->Next = current;
 	Length++;
@@ -168,21 +165,20 @@ void HashTable::Collision(int hash, string key, string value)
 void HashTable::Rehashing()
 {
 	int oldSize = Size;
-	//TODO: Вынести в именованную константу
-	Size = Size * 1.5;
+	//TODO: Вынести в именованную константу(Done)
+	Size = Size * growthFactor;
 	Length = 0;
 
 	Node* newArray = new Node[Size];
-	Node* oldArray = Array;
-	Array = newArray;
-	Node* current;
+	Node* oldArray = KeyValueArray;
+	KeyValueArray = newArray;
 
 	Init();
 	
 	// Все элементы старой таблицы переносятся в новую таблицу
 	for (int i = 0; i < oldSize; i++)
 	{
-		current = &oldArray[i];
+		Node* current = &oldArray[i];
 
 		if (current->Key.empty())
 		{
@@ -191,7 +187,7 @@ void HashTable::Rehashing()
 
 		while (current != nullptr)
 		{
-			Add(current->Key, current->Value);
+			Add(&current->Key, &current->Value);
 			current = current->Next;
 		}
 	}
@@ -202,7 +198,7 @@ void HashTable::Rehashing()
 // Удаление таблицы
 void HashTable::Delete()
 {
-	delete[] Array;
+	delete[] KeyValueArray;
 }
 
 // Проверка: пуст словарь(true) или нет(false)
@@ -214,13 +210,11 @@ bool HashTable::IsEmpty()
 // Вывод таблицы на экран
 void Print(HashTable* hashTable)
 {
-	Node* current;
-
 	cout << "\n\tХеш-таблица\n\n";
 	cout << "Индекс\t:\tКлюч\t:\tЗначение\n";
 	for (int i = 0; i < hashTable->Size; i++)
 	{
-		current = &hashTable->Array[i];
+		Node* current = &hashTable->KeyValueArray[i];
 		if (current->Key.empty())
 		{
 			cout << i << "\t:\tПусто\t:\tПусто\n";

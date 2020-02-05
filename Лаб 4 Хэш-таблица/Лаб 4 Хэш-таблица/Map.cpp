@@ -8,7 +8,7 @@ using namespace std;
 using std::string;
 
 // Добавление в словарь набора key-value
-void Map::Add(string key, string value)
+void Map::Add(string* key, string* value)
 {
 	if (Contains(key))
 	{
@@ -16,37 +16,37 @@ void Map::Add(string key, string value)
 		return;
 	}
 
-	Table->Add(key, value);
+	InternalHashTable->Add(key, value);
 }
 
 // Удаление из словаря набора key-value
-void Map::Remove(string key)
+void Map::Remove(string* key)
 {
-	Table->Remove(key);
+	InternalHashTable->Remove(key);
 }
 
 // Поиск value по key
-string Map::Find(string key)
+string Map::Find(string* key)
 {
-	return Table->Find(key);
+	return InternalHashTable->Find(key);
 }
 
 // Удаление словаря
 void Map::Delete()
 {
-	Table->Delete();
+	InternalHashTable->Delete();
 }
 
 // Проверка: содержит словарь ключ или нет
-bool Map::Contains(string key)
+bool Map::Contains(string* key)
 {
-	int hash = Table->Hash(key);
-	Node* current = &Table->Array[hash];
+	int hash = InternalHashTable->HashCalculate(key);
+	Node* current = &InternalHashTable->KeyValueArray[hash];
 
 	while (current != nullptr)
 	{
 		// Запрет на дублирование пар key-value
-		if (current->Key == key)
+		if (current->Key == *key)
 		{
 			return true;
 		}
@@ -60,19 +60,17 @@ bool Map::Contains(string key)
 // Проверка: пуст словарь(true) или нет(false)
 bool Map::IsEmpty()
 {
-	return Table->Length == 0;
+	return InternalHashTable->Length == 0;
 }
 
 // Вывод словаря на экран
 void Print(Map* map)
 {
-	Node* current;
-
 	cout << "\n\tСловарь\n\n";
 	cout << "Ключ\t:\tЗначение\n";
-	for (int i = 0; i < map->Table->Size; i++)
+	for (int i = 0; i < map->InternalHashTable->Size; i++)
 	{
-		current = &map->Table->Array[i];
+		Node* current = &map->InternalHashTable->KeyValueArray[i];
 		while (current != nullptr)
 		{
 			if (!current->Key.empty())
