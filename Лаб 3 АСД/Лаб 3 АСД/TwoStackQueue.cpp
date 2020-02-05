@@ -56,14 +56,12 @@ void Print(TwoStackQueue* stackQueue)
 		return;
 	}
 
-	int length = stackQueue->InputStack->Length + 
-		stackQueue->OutputStack->Length;
+	int length = stackQueue->InputStack->Length + stackQueue->OutputStack->Length;
 	int* tempArray = new int[length];
-	Node* current;
 
 	if (stackQueue->InputStack->IsEmpty() == false)
 	{
-		current = stackQueue->InputStack->Top;
+		StackNode* current = stackQueue->InputStack->TopElement;
 		int i = 0;
 		while (current != nullptr)
 		{
@@ -75,7 +73,7 @@ void Print(TwoStackQueue* stackQueue)
 	
 	if (stackQueue->OutputStack->IsEmpty() == false)
 	{
-		current = stackQueue->OutputStack->Top;
+		StackNode* current = stackQueue->OutputStack->TopElement;
 		int i = length - 1;
 		while (current != nullptr)
 		{

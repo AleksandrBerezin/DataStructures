@@ -151,6 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="MenuRingBuffer.cpp" />
+    <ClCompile Include="MenuRingBufferQueue.cpp" />
+    <ClCompile Include="MenuStack.cpp" />
+    <ClCompile Include="MenuTwoStackQueue.cpp" />
     <ClCompile Include="RingBuffer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RingBufferQueue.cpp" />
@@ -159,7 +164,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constant.h" />
-    <ClInclude Include="Node.h" />
+    <ClInclude Include="Functions.h" />
+    <ClInclude Include="MenuRingBuffer.h" />
+    <ClInclude Include="MenuRingBufferQueue.h" />
+    <ClInclude Include="MenuStack.h" />
+    <ClInclude Include="MenuTwoStackQueue.h" />
+    <ClInclude Include="StackNode.h" />
     <ClInclude Include="RingBuffer.h" />
     <ClInclude Include="RingBufferQueue.h" />
     <ClInclude Include="Stack.h" />

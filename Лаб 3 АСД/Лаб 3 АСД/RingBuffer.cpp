@@ -7,14 +7,14 @@ using namespace std;
 // Добавление элемента в буфер
 void RingBuffer::Push(int element)
 {
-	Buffer[Write] = element;
-	//TODO: Дубль
-	Write = (Write + 1) % Size;
+	Buffer[IndexWrite] = element;
+	//TODO: Дубль(Done)
+	IncreaseIndexWrite();
 	
 	if (Length == Size)
 	{
-		//TODO: Дубль
-		Read = (Read + 1) % Size;
+		//TODO: Дубль(Done)
+		IncreaseIndexRead();
 	}
 	else
 	{
@@ -25,9 +25,9 @@ void RingBuffer::Push(int element)
 // Извлечение элемента из буфера
 int RingBuffer::Pop()
 {
-	int element = Buffer[Read];
-	//TODO: Дубль
-	Read = (Read + 1) % Size;
+	int element = Buffer[IndexRead];
+	//TODO: Дубль(Done)
+	IncreaseIndexRead();
 	Length--;
 	
 	return element;
@@ -36,21 +36,21 @@ int RingBuffer::Pop()
 // Изменение размера буфера
 void RingBuffer::Resize()
 {
-	//TODO: Вынести в именованную константу
-	int* newBuffer = new int[Size * 1.5];
+	//TODO: Вынести в именованную константу(Done)
+	int* newBuffer = new int[Size * growthFactor];
 
 	for (int i = 0; i < Length; i++)
 	{
-		newBuffer[i] = Buffer[Read];
-		//TODO: Дубль
-		Read = (Read + 1) % Size;
+		newBuffer[i] = Buffer[IndexRead];
+		//TODO: Дубль(Done)
+		IncreaseIndexRead();
 	}
 
 	delete[] Buffer;
 	Buffer = newBuffer;
-	Size = Size * 1.5;
-	Read = 0;
-	Write = Length;
+	Size = Size * growthFactor;
+	IndexRead = 0;
+	IndexWrite = Length;
 }
 
 // Проверка: пуст кольцевой буфер(true) или нет(false)
@@ -77,6 +77,18 @@ void RingBuffer::Delete()
 	delete[] Buffer;
 }
 
+// Увеличение индекса, с которого идет запись
+void RingBuffer::IncreaseIndexWrite()
+{
+	IndexWrite = (IndexWrite + 1) % Size;
+}
+
+// Увеличение индекса, с которого идет чтение
+void RingBuffer::IncreaseIndexRead()
+{
+	IndexRead = (IndexRead + 1) % Size;
+}
+
 // Вывод на экран
 void Print(RingBuffer* RingBuf)
 {
@@ -86,7 +98,7 @@ void Print(RingBuffer* RingBuf)
 		return;
 	}
 
-	int read = RingBuf->Read;
+	int read = RingBuf->IndexRead;
 	cout << "Кольцевой буфер: ";
 	for (int i = 0; i < RingBuf->Length; i++)
 	{

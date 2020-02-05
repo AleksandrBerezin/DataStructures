@@ -1,8 +1,11 @@
 #pragma once
+#include "RingBuffer.h"
+#include "RingBufferQueue.h"
+
 struct RingBufferQueue
 {
-	//TODO: Naming
-	RingBuffer* RingBuf;
+	//TODO: Naming(Done)
+	RingBuffer* Buffer;
 
 	void Enqueue(int element);
 	int Dequeue();
@@ -11,8 +14,8 @@ struct RingBufferQueue
 
 	RingBufferQueue()
 	{
-		RingBuf = new RingBuffer;
+		Buffer = new RingBuffer;
 	}
 };
 
-void Print(RingBufferQueue* RingBuf);
+void Print(RingBufferQueue* ringBuffer);

@@ -1,2 +1,3 @@
 #pragma once
-const int BUFFERSIZE = 8; //Размер буфера
+const int bufferSize = 8;
+const double growthFactor = 1.5;

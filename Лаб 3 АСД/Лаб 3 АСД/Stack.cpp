@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Constant.h"
-#include "Node.h"
+#include "StackNode.h"
 #include "Stack.h"
 
 using namespace std;
@@ -8,18 +8,18 @@ using namespace std;
 // Добавление элемента в стек
 void Stack::Push(int element)
 {
-	Node* newNode = new Node;
+	StackNode* newNode = new StackNode;
 	newNode->Data = element;
 
-	if (Top == nullptr)
+	if (TopElement == nullptr)
 	{
-		Top = newNode;
+		TopElement = newNode;
 		newNode->Next = nullptr;
 	}
 	else
 	{
-		newNode->Next = Top;
-		Top = newNode;
+		newNode->Next = TopElement;
+		TopElement = newNode;
 	}
 
 	Length++;
@@ -28,8 +28,8 @@ void Stack::Push(int element)
 // Извлечение элемента из стека (последнего)
 int Stack::Pop()
 {
-	Node* last = Top;
-	Top = Top->Next;
+	StackNode* last = TopElement;
+	TopElement = TopElement->Next;
 	
 	int element = last->Data;
 	Length--;
@@ -41,8 +41,8 @@ int Stack::Pop()
 // Изменение размера стека
 void Stack::Resize()
 {
-	//TODO: Вынести в именованную константу
-	Size = Size * 1.5;
+	//TODO: Вынести в именованную константу(Done)
+	Size = Size * growthFactor;
 }
 
 // Проверка: пуст стек(true) или нет(false)
@@ -54,17 +54,16 @@ bool Stack::IsEmpty()
 // Удаление стека (очистка памяти)
 void Stack::Delete()
 {
-	Node* current = Top;
-	//TODO: Почему здесь?
-	Node* node;
+	StackNode* current = TopElement;
+	//TODO: Почему здесь?(Done)
 	while (current != nullptr)
 	{
-		node = current;
+		StackNode* node = current;
 		current = current->Next;
 		delete node;
 	}
 
-	Top = nullptr;
+	TopElement = nullptr;
 	Length = 0;
 	Size = 0;
 }
@@ -79,7 +78,7 @@ void Print(Stack* stack)
 	}
 
 	int* tempArray = new int[stack->Length];
-	Node* current = stack->Top;
+	StackNode* current = stack->TopElement;
 
 	int i = 0;
 	while (current != nullptr)

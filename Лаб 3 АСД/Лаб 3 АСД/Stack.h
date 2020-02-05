@@ -1,10 +1,11 @@
 #pragma once
-#include "Node.h"
+#include "StackNode.h"
+#include "Constant.h"
 
 struct Stack
 {
-	//TODO: Naming
-	Node* Top; // Верхний элемент стека
+	//TODO: Naming(Done)
+	StackNode* TopElement; // Верхний элемент стека
 	int Size; // Размер стека
 	int Length; // Количество элементов
 
@@ -16,8 +17,8 @@ struct Stack
 
 	Stack()
 	{
-		Size = BUFFERSIZE;
-		Top = nullptr;
+		Size = bufferSize;
+		TopElement = nullptr;
 		Length = 0;
 	}
 };

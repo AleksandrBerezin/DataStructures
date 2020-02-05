@@ -1,4 +1,7 @@
 #pragma once
+#include "Stack.h"
+#include "TwoStackQueue.h"
+
 struct TwoStackQueue
 {
 	Stack* InputStack;

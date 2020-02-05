@@ -8,31 +8,31 @@ using namespace std;
 // Добавление элемента в очередь
 void RingBufferQueue::Enqueue(int element)
 {
-	if (RingBuf->Length == RingBuf->Size)
+	if (Buffer->Length == Buffer->Size)
 	{
-		RingBuf->Resize();
+		Buffer->Resize();
 	}
 
-	RingBuf->Push(element);
+	Buffer->Push(element);
 }
 
 // Извлечение элемента из очереди
 int RingBufferQueue::Dequeue()
 {
-	return RingBuf->Pop();
+	return Buffer->Pop();
 }
 
 // Проверка: пуста очередь(true) или нет(false)
 bool RingBufferQueue::IsEmpty()
 {
-	return RingBuf->IsEmpty();
+	return Buffer->IsEmpty();
 }
 
 // Удаление очереди
 void RingBufferQueue::Delete()
 {
-	RingBuf->Delete();
-	delete RingBuf;
+	Buffer->Delete();
+	delete Buffer;
 }
 
 // Вывод на экран
@@ -44,14 +44,14 @@ void Print(RingBufferQueue* RingQueue)
 		return;
 	}
 
-	int length = RingQueue->RingBuf->Length;
-	int read = RingQueue->RingBuf->Read;
-	int size = RingQueue->RingBuf->Size;
+	int length = RingQueue->Buffer->Length;
+	int read = RingQueue->Buffer->IndexRead;
+	int size = RingQueue->Buffer->Size;
 	
 	cout << "Текущая очередь: ";
 	for (int i = 0; i < length; i++)
 	{
-		cout << RingQueue->RingBuf->Buffer[read] << " ";
+		cout << RingQueue->Buffer->Buffer[read] << " ";
 		read = (read + 1) % size;
 	}
 	cout << "\n";
