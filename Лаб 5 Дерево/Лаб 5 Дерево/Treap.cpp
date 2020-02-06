@@ -101,8 +101,7 @@ void Treap::FastInsert(TreapNode* node, TreapNode* parent,
 		else if (parent != nullptr)
 		{
 			
-			node->Key > parent->Key ? parent->Right = node :
-				parent->Left = node;
+			node->Key > parent->Key ? parent->Right = node : parent->Left = node;
 		}
 
 		return;
@@ -117,9 +116,8 @@ void Treap::FastInsert(TreapNode* node, TreapNode* parent,
 		
 		if (parent != nullptr)
 		{
-			//TODO: Formatting
-			parent->Left == node ? parent->Left = newNode : 
-				parent->Right = newNode;
+			//TODO: Formatting(Done)
+			parent->Left == node ? parent->Left = newNode : parent->Right = newNode;
 		}
 		else
 		{
@@ -145,20 +143,20 @@ void Treap::SlowRemove(int key)
 	TreapNode* right = nullptr;
 	Split(Root, key, left, right);
 
-	//TODO: Naming
-	TreapNode* newLeft = nullptr;	// Левое дерево без key
-	TreapNode* newRight = nullptr;	// Только key
-	Split(left, key - 1, newLeft, newRight);
+	//TODO: Naming(Done)
+	TreapNode* leftTreeWithoutKey = nullptr;	// Левое дерево без key
+	TreapNode* treeContainOnlyKey = nullptr;	// Только key
+	Split(left, key - 1, leftTreeWithoutKey, treeContainOnlyKey);
 	
-	if (newRight == nullptr)
+	if (treeContainOnlyKey == nullptr)
 	{
 		cout << "Такого элемента нет.\n\n";
 		return;
 	}
 
-	Root = Merge(newLeft, right);
+	Root = Merge(leftTreeWithoutKey, right);
 
-	delete newRight;
+	delete treeContainOnlyKey;
 }
 
 // Оптимизированное удаление (1 Merge)

@@ -4,6 +4,8 @@
 #include "BinaryTree.h"
 #include "TreapNode.h"
 #include "Treap.h"
+#include "MenuBinaryTree.h"
+#include "MenuTreap.h"
 
 using namespace std;
 
@@ -12,347 +14,34 @@ int InputInt();
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	//TODO: Ответственности. Есть смысл разделить меню
+	//TODO: Ответственности. Есть смысл разделить меню(Done)
 	BinaryTree* binaryTree = new BinaryTree();
 	Treap* treap = new Treap();
 
-	//TODO: Naming
-	bool exit = false;
+	//TODO: Naming(Done)
+	bool isExit = false;
 
-	while (!exit)
+	while (!isExit)
 	{
 		cout << "\nВыберите структуру данных для работы:\n";
 		cout << "1. Бинарное дерево поиска.\n"
 			<< "2. Декартово дерево.\n"
 			<< "0. Выход.\n\n";
 
-		int number = InputInt();
-		//TODO: Naming
-		bool back = false;
-		switch (number)
+		switch (InputInt())
 		{
 			case 1:
 			{
-				while (!back)
-				{
-					cout << "\nВыберите вариант:\n";
-					cout << "1. Добавление элемента.\n"
-						<< "2. Удаление элемента.\n"
-						<< "3. Поиск элемента.\n"
-						<< "4. Поиск максимума дерева.\n"
-						<< "5. Поиск минимума дерева.\n"
-						<< "6. Удаление дерева.\n"
-						<< "7. Вывод дерева на экран.\n"
-						<< "0. Назад.\n\n";
-
-					int variant = InputInt();
-					switch (variant)
-					{
-						case 1:
-						{
-							if (binaryTree == nullptr)
-							{
-								binaryTree = new BinaryTree();
-							}
-
-							cout << "Введите ключ элемента: ";
-							int key = InputInt();
-							cout << "\n";
-
-							binaryTree->Insert(key);
-							Print(binaryTree->Root, 0);
-							break;
-						}
-						case 2:
-						{
-								//TODO: Дубль
-							if (binaryTree == nullptr || binaryTree->IsEmpty())
-							{
-								cout << "Дерево пустое.\n";
-								break;
-							}
-
-							cout << "Введите ключ элемента: ";
-							int key = InputInt();
-							cout << "\n";
-
-							binaryTree->Remove(key);
-							Print(binaryTree->Root, 0);
-							break;
-						}
-						case 3:
-						{
-								//TODO: Дубль
-							if (binaryTree == nullptr || binaryTree->IsEmpty())
-							{
-								cout << "Дерево пустое.\n";
-								break;
-							}
-
-							cout << "Введите ключ элемента: ";
-							int key = InputInt();
-							cout << "\n";
-
-							BinaryTreeNode* node = binaryTree->Find(key);
-							//TODO: Formatting
-							cout << (node == nullptr ?  "Такого элемента нет.\n"
-								: "Элемент найден.\n");
-
-							break;
-						}
-						case 4:
-						{
-								//TODO: Дубль
-							if (binaryTree == nullptr || binaryTree->IsEmpty())
-							{
-								cout << "Дерево пустое.\n";
-								break;
-							}
-
-							BinaryTreeNode* max = binaryTree->FindMax();
-
-							if (max == nullptr)
-							{
-								cout << "Дерево пустое.\n";
-								break;
-							}
-
-							cout << "Максимальный элемент дерева равен "
-								<< max->Key << ".\n";
-							break;
-						}
-						case 5:
-						{
-								//TODO: Дубль
-							if (binaryTree == nullptr || binaryTree->IsEmpty())
-							{
-								cout << "Дерево пустое.\n";
-								break;
-							}
-
-								//TODO: RSDN
-							BinaryTreeNode* min;
-							min = binaryTree->FindMin();
-
-							if (min == nullptr)
-							{
-								cout << "Дерево пустое.\n";
-								break;
-							}
-
-							cout << "Минимальный элемент дерева равен "
-								<< min->Key << ".\n";
-							break;
-						}
-						case 6:
-							if (binaryTree == nullptr)
-							{
-								break;
-							}
-
-							binaryTree->Clear(binaryTree->Root);
-							delete binaryTree;
-							binaryTree = nullptr;
-							break;
-						case 7:
-						//TODO: Дубль
-							if (binaryTree == nullptr || binaryTree->IsEmpty())
-							{
-								cout << "Дерево пустое.\n";
-								break;
-							}
-
-							cout << "\n";
-							Print(binaryTree->Root, 0);
-							break;
-						case 0:
-							back = true;
-							break;
-						default:
-							cout << "Выбран неверный вариант, попробуйте еще раз.\n";
-							break;
-					}
-				}
+				Menu(binaryTree);
 				break;
 			}
 		    case 2:
 			{
-				while (!back)
-				{
-					cout << "\nВыберите вариант:\n";
-					cout << "1. Добавление элемента с использованием "<<
-						"неоптимизированного алгоритма.\n"
-						<< "2. Добавление элемента с использованием " <<
-						"оптимизированного алгоритма.\n"
-						<< "3. Удаление элемента с использованием " <<
-						"неоптимизированного алгоритма.\n"
-						<< "4. Удаление элемента с использованием " <<
-						"оптимизированного алгоритма.\n"
-						<< "5. Поиск элемента.\n"
-						<< "6. Удаление дерева.\n"
-						<< "7. Вывод дерева на экран.\n"
-						<< "0. Назад.\n\n";
-
-					int variant = InputInt();
-					switch (variant)
-					{
-						case 1:
-						{
-							if (treap == nullptr)
-							{
-								treap = new Treap();
-							}
-
-							cout << "Введите ключ элемента: ";
-							int key = InputInt();
-							cout << "\n";
-
-							TreapNode* node;
-
-							do
-							{
-								node = treap->Find(key);
-
-								if (node != nullptr)
-								{
-									cout << "Элемент с таким ключем присутствует "
-									<< "в дереве, введите другой ключ: ";
-									key = InputInt();
-									cout << "\n";
-								}
-							} 
-							while (node != nullptr);
-
-							treap->SlowInsert(key);
-							Print(treap->Root, 0);
-							break;
-						}
-						case 2:
-						{
-							if (treap == nullptr)
-							{
-								treap = new Treap();
-							}
-
-							cout << "Введите ключ элемента: ";
-							int key = InputInt();
-							cout << "\n";
-
-							TreapNode* node;
-
-							do
-							{
-								node = treap->Find(key);
-
-								if (node != nullptr)
-								{
-									cout << "Элемент с таким ключем присутствует "
-										<< "в дереве, введите другой ключ: ";
-									key = InputInt();
-									cout << "\n";
-								}
-							} 
-							while (node != nullptr);
-							//TODO: nullptr
-							srand(time(0));
-							int priority = rand() % 100;
-
-							treap->FastInsert(treap->Root, nullptr, key, priority);
-							Print(treap->Root, 0);
-							break;
-						}
-						case 3:
-						{
-								//TODO: Дубль
-							if (treap == nullptr || treap->IsEmpty())
-							{
-								cout << "Дерево пустое.\n";
-								break;
-							}
-
-							cout << "Введите ключ элемента: ";
-							int key = InputInt();
-							cout << "\n";
-
-							treap->SlowRemove(key);
-							Print(treap->Root, 0);
-							break;
-						}
-						case 4:
-						{
-								//TODO: Дубль
-							if (treap == nullptr || treap->IsEmpty())
-							{
-								cout << "Дерево пустое.\n";
-								break;
-							}
-
-							cout << "Введите ключ элемента: ";
-							int key = InputInt();
-							cout << "\n";
-
-							treap->FastRemove(treap->Root, nullptr, key);
-							Print(treap->Root, 0);
-							break;
-						}
-						case 5:
-						{
-								//TODO: Дубль
-							if (treap == nullptr || treap->IsEmpty())
-							{
-								cout << "Дерево пустое.\n";
-								break;
-							}
-
-							cout << "Введите ключ элемента: ";
-							int key = InputInt();
-
-							TreapNode* node = treap->Find(key);
-
-							if (node == nullptr)
-							{
-								cout << "Такого элемента нет.\n";
-							}
-							else
-							{
-								cout << "Элемент найден, ключ = " << node->Key 
-									<< ", приоритет = " << node->Priority << ".\n";
-							}
-
-							break;
-						}
-						case 6:
-							if (treap == nullptr)
-							{
-								break;
-							}
-
-							treap->Clear(treap->Root);
-							delete treap;
-							treap = nullptr;
-							break;
-						case 7:
-						//TODO: Дубль
-							if (treap == nullptr || treap->IsEmpty())
-							{
-								cout << "Дерево пустое.\n";
-								break;
-							}
-
-							cout << "\n";
-							Print(treap->Root, 0);
-							break;
-						case 0:
-							back = true;
-							break;
-						default:
-							cout << "Выбран неверный вариант, попробуйте еще раз.\n";
-							break;
-					}
-				}
+				Menu(treap);
 				break;
 			}
 		    case 0:
+			{
 				if (binaryTree != nullptr)
 				{
 					binaryTree->Clear(binaryTree->Root);
@@ -366,11 +55,14 @@ int main()
 					treap = nullptr;
 				}
 
-			exit = true;
-			break;
-		default:
-			cout << "Выбран неверный вариант, попробуйте еще раз.\n";
-			break;
+				isExit = true;
+				break;
+			}
+			default:
+			{
+				cout << "Выбран неверный вариант, попробуйте еще раз.\n";
+				break;
+			}
 		}
 	}
 

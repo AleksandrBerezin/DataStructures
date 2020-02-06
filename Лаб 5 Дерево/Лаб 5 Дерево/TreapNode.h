@@ -2,21 +2,17 @@
 #include <ctime>
 struct TreapNode
 {
-	//TODO: Зачем эти комментарии?
-	int Key;	// Ключ
-	int Priority;	// Приоритет
-
-	TreapNode* Left;	// Указатель на левое поддерево
-	TreapNode* Right;	// Указатель на правое поддерево
+	int Key;
+	int Priority;
+	TreapNode* Left;
+	TreapNode* Right;
 
 	TreapNode(int key)
 	{
-		//TODO: nullptr
-		srand(time(0));
+		//TODO: nullptr(Done)
+		srand(time(nullptr));
 
 		Key = key;
-		//TODO: Зачем эти комментарии?
-		// Приоритету присваивается случайное значение от 0 до 99
 		Priority = rand() % 100;
 
 		Left = nullptr;

@@ -1,8 +1,9 @@
 #pragma once
+#include "BinaryTreeNode.h"
+
 struct BinaryTree
 {
-	//TODO: Зачем эти комментарии?
-	BinaryTreeNode* Root = nullptr;	// Корень дерева
+	BinaryTreeNode* Root = nullptr;
 	BinaryTreeNode* Find(int key);
 	BinaryTreeNode* FindMax();
 	BinaryTreeNode* FindMin();

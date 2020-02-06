@@ -1,7 +1,9 @@
 #pragma once
+#include "TreapNode.h"
+
 struct Treap
-{//TODO: Зачем эти комментарии?
-	TreapNode* Root = nullptr;	// Корень дерева
+{
+	TreapNode* Root = nullptr;
 	TreapNode* Find(int key);
 	void Split(TreapNode* node, int key, 
 		TreapNode*& left, TreapNode*& right);
