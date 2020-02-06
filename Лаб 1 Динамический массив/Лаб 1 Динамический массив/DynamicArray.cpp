@@ -23,7 +23,6 @@ void DynamicArray::Add(int element)
 //Изменение размера памяти для массива
 void DynamicArray::Resize()
 {
-	//TODO: Числовые константы лучше поименовать(Done)
 	if (Length >= Capacity)
 	{
 		Capacity = Length * growthFactor;
@@ -115,7 +114,6 @@ int DynamicArray::BinarySearch(int element)
 {
 	int first = 0;
 	int last = Length;
-	//TODO: Почему здесь?(Done)
 
 	while (first < last)
 	{
@@ -147,7 +145,6 @@ bool DynamicArray::IsEmpty()
 }
 
 //Вывод массива на экран
-//TODO: RSDN(Done)
 void Print(DynamicArray* array) 
 {
 	cout << "\nПолученный массив: ";

@@ -14,8 +14,6 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	
 	DynamicArray* array = new DynamicArray();
-
-	//TODO: Naming(Done)
 	bool isExit = false;
 
 	while (!isExit)
@@ -44,12 +42,11 @@ int main()
 			}
 			case 2:
 			{
-					//TODO: Дубль(Done)
 				if (IsArrayNotCreateOrEmpty(array))
 				{
 					break;
 				}
-				//TODO: Дубль(Done)
+
 				if (IsArrayEmpty(array))
 				{
 					break;
@@ -90,7 +87,7 @@ int main()
 			case 5:
 			{
 				CheckArrayOnCreate(array);
-					//TODO: Дубль(Done)
+
 				if (IsArrayEmpty(array))
 				{
 					break;
@@ -107,7 +104,6 @@ int main()
 			}
 			case 6:
 			{
-				//TODO: Дубль(Done)
 				if (IsArrayNotCreateOrEmpty(array))
 				{
 					break;
@@ -119,7 +115,6 @@ int main()
 			}
 			case 7:
 			{
-					//TODO: Дубль(Done)
 				if (IsArrayNotCreateOrEmpty(array))
 				{
 					break;
@@ -142,7 +137,6 @@ int main()
 			}
 			case 8:
 			{
-					//TODO: Дубль(Done)
 				if (IsArrayNotCreateOrEmpty(array))
 				{
 					break;

@@ -7,7 +7,6 @@ struct DynamicArray
 
 	void Add(int element);
 	void Resize();
-	//TODO: Naming(Done)
 	void InsertionSort();
 	void Insert(int element, int index);
 	void Delete(int index);
