@@ -6,12 +6,12 @@ using namespace std;
 //Проверка, что вводимое число int
 int Input()
 {
-	//TODO: naming
-	int a = 0;
+	//TODO: naming(Done)
+	int number = 0;
 
 	while (true)
 	{
-		cin >> a;
+		cin >> number;
 		if (cin.fail())
 		{
 			cin.clear();
@@ -24,5 +24,5 @@ int Input()
 		}
 	}
 
-	return a;
+	return number;
 }

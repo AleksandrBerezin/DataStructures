@@ -8,15 +8,15 @@ using namespace std;
 void RingBuffer::Push(int element)
 {
 	Buffer[IndexWrite] = element;
-	IncreaseIndexWrite();
+	IncreaseIndex(IndexWrite);
 	
-	if (Length == Size)
+	if (CurrentLength == Size)
 	{
-		IncreaseIndexRead();
+		IncreaseIndex(IndexRead);
 	}
 	else
 	{
-		Length++;
+		CurrentLength++;
 	}
 }
 
@@ -24,8 +24,8 @@ void RingBuffer::Push(int element)
 int RingBuffer::Pop()
 {
 	int element = Buffer[IndexRead];
-	IncreaseIndexRead();
-	Length--;
+	IncreaseIndex(IndexRead);
+	CurrentLength--;
 	
 	return element;
 }
@@ -35,35 +35,35 @@ void RingBuffer::Resize()
 {
 	int* newBuffer = new int[Size * growthFactor];
 
-	for (int i = 0; i < Length; i++)
+	for (int i = 0; i < CurrentLength; i++)
 	{
 		newBuffer[i] = Buffer[IndexRead];
-		IncreaseIndexRead();
+		IncreaseIndex(IndexRead);
 	}
 
 	delete[] Buffer;
 	Buffer = newBuffer;
 	Size = Size * growthFactor;
 	IndexRead = 0;
-	IndexWrite = Length;
+	IndexWrite = CurrentLength;
 }
 
 // Проверка: пуст кольцевой буфер(true) или нет(false)
 bool RingBuffer::IsEmpty()
 {
-	return Length == 0;
+	return CurrentLength == 0;
 }
 
 // Возврат свободного места
 int RingBuffer::GetFreeSpace()
 {
-	return Size - Length;
+	return Size - CurrentLength;
 }
 
 // Возврат занятого места
 int RingBuffer::GetOccupiedSpace()
 {
-	return Length;
+	return CurrentLength;
 }
 
 // Удаление буфера (очистка памяти)
@@ -72,18 +72,11 @@ void RingBuffer::Delete()
 	delete[] Buffer;
 }
 
-// Увеличение индекса, с которого идет запись
-void RingBuffer::IncreaseIndexWrite()
+// Увеличение индекса
+void RingBuffer::IncreaseIndex(int& index)
 {
-	//TODO: дубль
-	IndexWrite = (IndexWrite + 1) % Size;
-}
-
-// Увеличение индекса, с которого идет чтение
-void RingBuffer::IncreaseIndexRead()
-{
-	//TODO: дубль
-	IndexRead = (IndexRead + 1) % Size;
+	//TODO: дубль(Done)
+	index = (index + 1) % Size;
 }
 
 // Вывод на экран
@@ -97,7 +90,7 @@ void Print(RingBuffer* RingBuf)
 
 	int read = RingBuf->IndexRead;
 	cout << "Кольцевой буфер: ";
-	for (int i = 0; i < RingBuf->Length; i++)
+	for (int i = 0; i < RingBuf->CurrentLength; i++)
 	{
 		cout << RingBuf->Buffer[read] << " ";
 		read = (read + 1) % RingBuf->Size;

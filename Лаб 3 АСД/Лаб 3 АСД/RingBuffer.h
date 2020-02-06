@@ -7,9 +7,9 @@ struct RingBuffer
 	int* Buffer;
 	int IndexRead;	
 	int IndexWrite;
-	//TODO: naming
+	//TODO: naming(Done)
 	int Size;		
-	int Length;		
+	int CurrentLength;		
 
 	void Push(int element);
 	int Pop();
@@ -18,8 +18,7 @@ struct RingBuffer
 	int GetFreeSpace();
 	int GetOccupiedSpace();
 	void Delete();
-	void IncreaseIndexWrite();
-	void IncreaseIndexRead();
+	void IncreaseIndex(int& index);
 
 	RingBuffer()
 	{
@@ -27,7 +26,7 @@ struct RingBuffer
 		Buffer = new int[Size];
 		IndexRead = 0;
 		IndexWrite = 0;
-		Length = 0;
+		CurrentLength = 0;
 	}
 };
 

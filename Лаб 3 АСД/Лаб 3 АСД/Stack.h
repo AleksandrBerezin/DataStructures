@@ -5,9 +5,9 @@
 struct Stack
 {
 	StackNode* TopElement; 
-	//TODO: naming
+	//TODO: naming(Done)
 	int Size;			
-	int Length;			
+	int CurrentLength;			
 
 	void Push(int element);
 	int Pop();
@@ -19,7 +19,7 @@ struct Stack
 	{
 		Size = bufferSize;
 		TopElement = nullptr;
-		Length = 0;
+		CurrentLength = 0;
 	}
 };
 

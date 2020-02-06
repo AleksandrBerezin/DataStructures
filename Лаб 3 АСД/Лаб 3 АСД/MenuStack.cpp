@@ -32,7 +32,7 @@ void Menu(Stack*& stack)
 					stack = new Stack();
 				}
 
-				if (stack->Length == stack->Size)
+				if (stack->CurrentLength == stack->Size)
 				{
 					cout << "Стек переполнен.\n";
 					break;

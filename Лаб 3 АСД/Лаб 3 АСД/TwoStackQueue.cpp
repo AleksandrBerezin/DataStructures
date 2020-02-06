@@ -8,7 +8,7 @@ using namespace std;
 // Добавление элемента в очередь
 void TwoStackQueue::Enqueue(int element)
 {
-	if (InputStack->Length == InputStack->Size)
+	if (InputStack->CurrentLength == InputStack->Size)
 	{
 		InputStack->Resize();
 	}
@@ -56,7 +56,7 @@ void Print(TwoStackQueue* stackQueue)
 		return;
 	}
 
-	int length = stackQueue->InputStack->Length + stackQueue->OutputStack->Length;
+	int length = stackQueue->InputStack->CurrentLength + stackQueue->OutputStack->CurrentLength;
 	int* tempArray = new int[length];
 
 	if (stackQueue->InputStack->IsEmpty() == false)

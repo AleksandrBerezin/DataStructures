@@ -22,7 +22,7 @@ void Stack::Push(int element)
 		TopElement = newNode;
 	}
 
-	Length++;
+	CurrentLength++;
 }
 
 // Извлечение элемента из стека (последнего)
@@ -32,7 +32,7 @@ int Stack::Pop()
 	TopElement = TopElement->Next;
 	
 	int element = last->Data;
-	Length--;
+	CurrentLength--;
 	delete last;
 
 	return element;
@@ -47,7 +47,7 @@ void Stack::Resize()
 // Проверка: пуст стек(true) или нет(false)
 bool Stack::IsEmpty()
 {
-	return Length == 0;
+	return CurrentLength == 0;
 }
 
 // Удаление стека (очистка памяти)
@@ -62,7 +62,7 @@ void Stack::Delete()
 	}
 
 	TopElement = nullptr;
-	Length = 0;
+	CurrentLength = 0;
 	Size = 0;
 }
 
@@ -75,7 +75,7 @@ void Print(Stack* stack)
 		return;
 	}
 
-	int* tempArray = new int[stack->Length];
+	int* tempArray = new int[stack->CurrentLength];
 	StackNode* current = stack->TopElement;
 
 	int i = 0;
@@ -87,7 +87,7 @@ void Print(Stack* stack)
 	}
 
 	cout << "Полученный стек: ";
-	for (int j = stack->Length - 1; j >= 0; j--)
+	for (int j = stack->CurrentLength - 1; j >= 0; j--)
 	{
 		cout << tempArray[j] << " ";
 	}

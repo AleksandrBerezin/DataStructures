@@ -8,7 +8,7 @@ using namespace std;
 // Добавление элемента в очередь
 void RingBufferQueue::Enqueue(int element)
 {
-	if (Buffer->Length == Buffer->Size)
+	if (Buffer->CurrentLength == Buffer->Size)
 	{
 		Buffer->Resize();
 	}
@@ -44,7 +44,7 @@ void Print(RingBufferQueue* RingQueue)
 		return;
 	}
 
-	int length = RingQueue->Buffer->Length;
+	int length = RingQueue->Buffer->CurrentLength;
 	int read = RingQueue->Buffer->IndexRead;
 	int size = RingQueue->Buffer->Size;
 	
