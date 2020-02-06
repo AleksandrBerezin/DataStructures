@@ -85,7 +85,6 @@ void Menu(Treap*& treap)
 						cout << "\n";
 					}
 				} while (node != nullptr);
-				//TODO: nullptr(Done)
 				srand(time(nullptr));
 				int priority = rand() % 100;
 
@@ -95,7 +94,6 @@ void Menu(Treap*& treap)
 			}
 			case 3:
 			{
-				//TODO: Дубль(Done)
 				if (IsTreapNotCreateOrEmpty(treap))
 				{
 					break;
@@ -111,7 +109,6 @@ void Menu(Treap*& treap)
 			}
 			case 4:
 			{
-				//TODO: Дубль(Done)
 				if (IsTreapNotCreateOrEmpty(treap))
 				{
 					break;
@@ -127,7 +124,6 @@ void Menu(Treap*& treap)
 			}
 			case 5:
 			{
-				//TODO: Дубль(Done)
 				if (IsTreapNotCreateOrEmpty(treap))
 				{
 					break;
@@ -164,7 +160,6 @@ void Menu(Treap*& treap)
 			}
 			case 7:
 			{
-				//TODO: Дубль(Done)
 				if (IsTreapNotCreateOrEmpty(treap))
 				{
 					break;

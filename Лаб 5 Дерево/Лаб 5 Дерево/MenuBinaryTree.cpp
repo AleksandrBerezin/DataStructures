@@ -43,7 +43,6 @@ void Menu(BinaryTree*& binaryTree)
 			}
 			case 2:
 			{
-				//TODO: Дубль(Done)
 				if (IsBinaryTreeNotCreateOrEmpty(binaryTree))
 				{
 					break;
@@ -59,7 +58,6 @@ void Menu(BinaryTree*& binaryTree)
 			}
 			case 3:
 			{
-				//TODO: Дубль(Done)
 				if (IsBinaryTreeNotCreateOrEmpty(binaryTree))
 				{
 					break;
@@ -70,14 +68,14 @@ void Menu(BinaryTree*& binaryTree)
 				cout << "\n";
 
 				BinaryTreeNode* node = binaryTree->Find(key);
-				//TODO: Formatting(Done)
-				cout << (node == nullptr ? "Такого элемента нет.\n" : "Элемент найден.\n");
+				cout << (node == nullptr 
+					? "Такого элемента нет.\n" 
+					: "Элемент найден.\n");
 
 				break;
 			}
 			case 4:
 			{
-				//TODO: Дубль(Done)
 				if (IsBinaryTreeNotCreateOrEmpty(binaryTree))
 				{
 					break;
@@ -96,13 +94,11 @@ void Menu(BinaryTree*& binaryTree)
 			}
 			case 5:
 			{
-				//TODO: Дубль(Done)
 				if (IsBinaryTreeNotCreateOrEmpty(binaryTree))
 				{
 					break;
 				}
 
-				//TODO: RSDN(Done)
 				BinaryTreeNode* min = binaryTree->FindMin();
 
 				if (min == nullptr)
@@ -128,7 +124,6 @@ void Menu(BinaryTree*& binaryTree)
 			}
 			case 7:
 			{
-				//TODO: Дубль(Done)
 				if (IsBinaryTreeNotCreateOrEmpty(binaryTree))
 				{
 					break;

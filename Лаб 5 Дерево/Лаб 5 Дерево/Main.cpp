@@ -6,19 +6,16 @@
 #include "Treap.h"
 #include "MenuBinaryTree.h"
 #include "MenuTreap.h"
+#include "Functions.h"
 
 using namespace std;
-
-int InputInt();
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	//TODO: Ответственности. Есть смысл разделить меню(Done)
 	BinaryTree* binaryTree = new BinaryTree();
 	Treap* treap = new Treap();
 
-	//TODO: Naming(Done)
 	bool isExit = false;
 
 	while (!isExit)
@@ -66,27 +63,4 @@ int main()
 		}
 	}
 
-}
-
-//Проверка, что вводимое число int
-int InputInt()
-{
-	int number = 0;
-
-	while (true)
-	{
-		cin >> number;
-		if (cin.fail())
-		{
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << "ERROR\n";
-		}
-		else
-		{
-			break;
-		}
-	}
-
-	return number;
 }

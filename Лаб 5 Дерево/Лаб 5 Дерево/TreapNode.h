@@ -9,14 +9,8 @@ struct TreapNode
 
 	TreapNode(int key)
 	{
-		//TODO: nullptr(Done)
 		srand(time(nullptr));
-
-		Key = key;
-		Priority = rand() % 100;
-
-		Left = nullptr;
-		Right = nullptr;
+		TreapNode(key, rand() % 100, nullptr, nullptr);
 	}
 
 	TreapNode(int key, int priority, TreapNode* left, TreapNode* right)

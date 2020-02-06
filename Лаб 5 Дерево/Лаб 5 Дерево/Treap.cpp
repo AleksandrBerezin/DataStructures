@@ -116,8 +116,9 @@ void Treap::FastInsert(TreapNode* node, TreapNode* parent,
 		
 		if (parent != nullptr)
 		{
-			//TODO: Formatting(Done)
-			parent->Left == node ? parent->Left = newNode : parent->Right = newNode;
+			parent->Left == node 
+				? parent->Left = newNode 
+				: parent->Right = newNode;
 		}
 		else
 		{
@@ -143,9 +144,8 @@ void Treap::SlowRemove(int key)
 	TreapNode* right = nullptr;
 	Split(Root, key, left, right);
 
-	//TODO: Naming(Done)
-	TreapNode* leftTreeWithoutKey = nullptr;	// Левое дерево без key
-	TreapNode* treeContainOnlyKey = nullptr;	// Только key
+	TreapNode* leftTreeWithoutKey = nullptr;
+	TreapNode* treeContainOnlyKey = nullptr;
 	Split(left, key - 1, leftTreeWithoutKey, treeContainOnlyKey);
 	
 	if (treeContainOnlyKey == nullptr)
