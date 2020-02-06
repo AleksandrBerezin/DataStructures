@@ -36,7 +36,7 @@ void Menu(HashTable*& hashTable)
 				cout << "Введите значение: ";
 				string value = InputString();
 
-				hashTable->Add(&key, &value);
+				hashTable->Add(key, value);
 				Print(hashTable);
 				break;
 			}
@@ -50,7 +50,7 @@ void Menu(HashTable*& hashTable)
 				cout << "Введите ключ: ";
 				string key = SubKey(InputString());
 
-				hashTable->Remove(&key);
+				hashTable->Remove(key);
 				Print(hashTable);
 				break;
 			}
@@ -64,7 +64,7 @@ void Menu(HashTable*& hashTable)
 				cout << "Введите ключ: ";
 				string key = SubKey(InputString());
 
-				string value = hashTable->Find(&key);
+				string value = hashTable->Find(key);
 				if (value == "")
 				{
 					cout << "Элемента с таким ключом нет.\n";

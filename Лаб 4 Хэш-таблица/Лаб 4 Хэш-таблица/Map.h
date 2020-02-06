@@ -7,12 +7,12 @@ struct Map
 {
 	HashTable* InternalHashTable;
 
-	//TODO:references
-	void Add(string* key, string* value);
-	void Remove(string* key);
-	string Find(string* key);
+	//TODO:references(Done)
+	void Add(string& key, string& value);
+	void Remove(string& key);
+	string Find(string& key);
 	void Delete();
-	bool Contains(string* key);
+	bool Contains(string& key);
 	bool IsEmpty();
 
 	Map()

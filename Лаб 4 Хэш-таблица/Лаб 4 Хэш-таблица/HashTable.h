@@ -9,17 +9,17 @@ const int sizeTable = 8;
 struct HashTable
 {
 	Node* KeyValueArray;	// Массив, содержащий элементы типа ключ-значение
-	int Length;				// Количество элементов в таблице
+	int CurrentLength;		// Количество элементов в таблице
 	int Size;				// Размер таблицы
 	
 	void Init();
-	//TODO: Использование ссылок при передаче string?
-	void Add(string* key, string* value);
-	void Remove(string* key);
-	string Find(string* key);
-	int CountHash(string* key);
-	//TODO: Naming
-	void CollisionResolution(int hash, string* key, string* value);
+	//TODO: Использование ссылок при передаче string?(Done)
+	void Add(string& key, string& value);
+	void Remove(string& key);
+	string Find(string& key);
+	int CountHash(string& key);
+	//TODO: Naming(Done)
+	void ResolveCollision(int hash, string& key, string& value);
 	void Rehashing();
 	void Delete();
 	bool IsEmpty();
@@ -27,7 +27,7 @@ struct HashTable
 	HashTable()
 	{
 		KeyValueArray = new Node[sizeTable];
-		Length = 0;
+		CurrentLength = 0;
 		Size = sizeTable;
 
 		Init();

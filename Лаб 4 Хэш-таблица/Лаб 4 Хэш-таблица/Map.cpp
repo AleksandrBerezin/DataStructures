@@ -8,7 +8,7 @@ using namespace std;
 using std::string;
 
 // Добавление в словарь набора key-value
-void Map::Add(string* key, string* value)
+void Map::Add(string& key, string& value)
 {
 	if (Contains(key))
 	{
@@ -20,13 +20,13 @@ void Map::Add(string* key, string* value)
 }
 
 // Удаление из словаря набора key-value
-void Map::Remove(string* key)
+void Map::Remove(string& key)
 {
 	InternalHashTable->Remove(key);
 }
 
 // Поиск value по key
-string Map::Find(string* key)
+string Map::Find(string& key)
 {
 	return InternalHashTable->Find(key);
 }
@@ -38,7 +38,7 @@ void Map::Delete()
 }
 
 // Проверка: содержит словарь ключ или нет
-bool Map::Contains(string* key)
+bool Map::Contains(string& key)
 {
 	int hash = InternalHashTable->CountHash(key);
 	Node* current = &InternalHashTable->KeyValueArray[hash];
@@ -46,7 +46,7 @@ bool Map::Contains(string* key)
 	while (current != nullptr)
 	{
 		// Запрет на дублирование пар key-value
-		if (current->Key == *key)
+		if (current->Key == key)
 		{
 			return true;
 		}
@@ -60,7 +60,7 @@ bool Map::Contains(string* key)
 // Проверка: пуст словарь(true) или нет(false)
 bool Map::IsEmpty()
 {
-	return InternalHashTable->Length == 0;
+	return InternalHashTable->CurrentLength == 0;
 }
 
 // Вывод словаря на экран

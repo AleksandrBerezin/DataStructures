@@ -36,7 +36,7 @@ void Menu(Map*& map)
 				cout << "Введите значение: ";
 				string value = InputString();
 
-				map->Add(&key, &value);
+				map->Add(key, value);
 				Print(map);
 				break;
 			}
@@ -50,7 +50,7 @@ void Menu(Map*& map)
 				cout << "Введите ключ: ";
 				string key = SubKey(InputString());
 
-				map->Remove(&key);
+				map->Remove(key);
 				Print(map);
 				break;
 			}
@@ -64,7 +64,7 @@ void Menu(Map*& map)
 				cout << "Введите ключ: ";
 				string key = SubKey(InputString());
 
-				string value = map->Find(&key);
+				string value = map->Find(key);
 				if (value == "")
 				{
 					cout << "Элемента с таким ключом нет.\n";

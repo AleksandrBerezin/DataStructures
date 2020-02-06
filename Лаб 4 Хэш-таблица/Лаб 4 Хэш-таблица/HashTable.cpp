@@ -19,11 +19,11 @@ void HashTable::Init()
 }
 
 // Добавление в таблицу набора key-value
-void HashTable::Add(string* key, string* value)
+void HashTable::Add(string& key, string& value)
 {
 	// Если коффициент заполнения таблицы >= 1
 	// вызываем функцию перехеширования
-	if (double(Length) / double(Size) >= fillFactor)
+	if (double(CurrentLength) / double(Size) >= fillFactor)
 	{
 		Rehashing();
 	}
@@ -32,18 +32,18 @@ void HashTable::Add(string* key, string* value)
 
 	if (KeyValueArray[hash].Key.empty())
 	{
-		KeyValueArray[hash].Key = *key;
-		KeyValueArray[hash].Value = *value;
-		Length++;
+		KeyValueArray[hash].Key = key;
+		KeyValueArray[hash].Value = value;
+		CurrentLength++;
 	}
 	else
 	{
-		CollisionResolution(hash, key, value);
+		ResolveCollision(hash, key, value);
 	}
 }
 
 // Удаление из таблицы набора key-value
-void HashTable::Remove(string* key)
+void HashTable::Remove(string& key)
 {
 	int hash = CountHash(key);
 
@@ -59,7 +59,7 @@ void HashTable::Remove(string* key)
 	{
 		Node* prev = nullptr;
 
-		if (current->Key == *key)
+		if (current->Key == key)
 		{
 			if (current->Next == nullptr)
 			{
@@ -85,7 +85,7 @@ void HashTable::Remove(string* key)
 				}
 			}
 
-			Length--;
+			CurrentLength--;
 			return;
 		}
 
@@ -97,14 +97,14 @@ void HashTable::Remove(string* key)
 }
 
 // Поиск value по key
-string HashTable::Find(string* key)
+string HashTable::Find(string& key)
 {
 	int hash = CountHash(key);
 	Node* current = &KeyValueArray[hash];
 
 	while (current != nullptr)
 	{
-		if (current->Key == *key)
+		if (current->Key == key)
 		{
 			return current->Value;
 		}
@@ -118,25 +118,30 @@ string HashTable::Find(string* key)
 // h(k) = (s0 * a^0 + s1 * a^1 + ... s(n-1) * a^(n-1) +sn * a ^ n) % m
 // a и m - взаимно простые
 // sn - символ под индексом n, m - размер таблицы
-int HashTable::CountHash(string* key)
+int HashTable::CountHash(string& key)
 {
 	int hash = 0;
 	//TODO: Naming(Done)
 	int exponent = 0;
 	int arg = Size - 1;
 
-	for (int i = 0; i < (*key).length(); i++)
+	for (int i = 0; i < (key).length(); i++)
 	{
 		int num = pow(arg, exponent);
 		hash = (hash + int(&(key[i])) * num) % Size;
 		exponent++;
+
+		if (hash < 0)
+		{
+			hash = 0 - hash;
+		}
 	}
 
 	return hash;
 }
 
 // Функция разрешения коллизий методом цепочек
-void HashTable::CollisionResolution(int hash, string* key, string* value)
+void HashTable::ResolveCollision(int hash, string& key, string& value)
 {
 	Node* current = &KeyValueArray[hash];
 	Node* prev = nullptr;
@@ -144,7 +149,7 @@ void HashTable::CollisionResolution(int hash, string* key, string* value)
 	while (current != nullptr)
 	{
 		// Запрет на дублирование пар key-value
-		if (current->Key == *key && current->Value == *value)
+		if (current->Key == key && current->Value == value)
 		{
 			return;
 		}
@@ -154,11 +159,10 @@ void HashTable::CollisionResolution(int hash, string* key, string* value)
 	}
 
 	current = new Node;
-	current->Key = *key;
-	current->Value = *value;
-	current->Next = nullptr;
+	current->Key = key;
+	current->Value = value;
 	prev->Next = current;
-	Length++;
+	CurrentLength++;
 }
 
 // Перехеширование (увеличение размера таблицы)
@@ -167,7 +171,7 @@ void HashTable::Rehashing()
 	int oldSize = Size;
 	//TODO: Вынести в именованную константу(Done)
 	Size = Size * growthFactor;
-	Length = 0;
+	CurrentLength = 0;
 
 	Node* newArray = new Node[Size];
 	Node* oldArray = KeyValueArray;
@@ -187,7 +191,7 @@ void HashTable::Rehashing()
 
 		while (current != nullptr)
 		{
-			Add(&current->Key, &current->Value);
+			Add(current->Key, current->Value);
 			current = current->Next;
 		}
 	}
@@ -204,7 +208,7 @@ void HashTable::Delete()
 // Проверка: пуст словарь(true) или нет(false)
 bool HashTable::IsEmpty()
 {
-	return Length == 0;
+	return CurrentLength == 0;
 }
 
 // Вывод таблицы на экран
