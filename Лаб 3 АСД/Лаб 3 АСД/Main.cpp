@@ -15,13 +15,10 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	//TODO: Ответственности(есть смысл разделить меню на разные файлы) (Done)
 	Stack* stack = new Stack;
-	//TODO: RSDN(Done)
 	RingBuffer* ringBuffer = new RingBuffer;
 	RingBufferQueue* ringQueue = new RingBufferQueue;
 	TwoStackQueue* stackQueue = new TwoStackQueue;
-	//TODO: Naming(Done)
 	bool isExit = false;
 
 	while (!isExit)

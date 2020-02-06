@@ -5,11 +5,11 @@
 struct RingBuffer
 {
 	int* Buffer;
-	//TODO: naming(Done)
-	int IndexRead; // Индекс, с которого идет чтение
-	int IndexWrite; // Индекс, с которого идет запись
-	int Size; // Размер буфера
-	int Length; // Количество элементов в буфере
+	int IndexRead;	
+	int IndexWrite;
+	//TODO: naming
+	int Size;		
+	int Length;		
 
 	void Push(int element);
 	int Pop();

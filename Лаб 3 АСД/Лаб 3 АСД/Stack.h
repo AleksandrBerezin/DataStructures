@@ -4,10 +4,10 @@
 
 struct Stack
 {
-	//TODO: Naming(Done)
-	StackNode* TopElement; // Верхний элемент стека
-	int Size; // Размер стека
-	int Length; // Количество элементов
+	StackNode* TopElement; 
+	//TODO: naming
+	int Size;			
+	int Length;			
 
 	void Push(int element);
 	int Pop();

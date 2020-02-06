@@ -6,6 +6,7 @@ using namespace std;
 //Проверка, что вводимое число int
 int Input()
 {
+	//TODO: naming
 	int a = 0;
 
 	while (true)

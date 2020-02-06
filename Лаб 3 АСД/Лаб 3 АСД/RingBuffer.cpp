@@ -8,12 +8,10 @@ using namespace std;
 void RingBuffer::Push(int element)
 {
 	Buffer[IndexWrite] = element;
-	//TODO: Дубль(Done)
 	IncreaseIndexWrite();
 	
 	if (Length == Size)
 	{
-		//TODO: Дубль(Done)
 		IncreaseIndexRead();
 	}
 	else
@@ -26,7 +24,6 @@ void RingBuffer::Push(int element)
 int RingBuffer::Pop()
 {
 	int element = Buffer[IndexRead];
-	//TODO: Дубль(Done)
 	IncreaseIndexRead();
 	Length--;
 	
@@ -36,13 +33,11 @@ int RingBuffer::Pop()
 // Изменение размера буфера
 void RingBuffer::Resize()
 {
-	//TODO: Вынести в именованную константу(Done)
 	int* newBuffer = new int[Size * growthFactor];
 
 	for (int i = 0; i < Length; i++)
 	{
 		newBuffer[i] = Buffer[IndexRead];
-		//TODO: Дубль(Done)
 		IncreaseIndexRead();
 	}
 
@@ -80,12 +75,14 @@ void RingBuffer::Delete()
 // Увеличение индекса, с которого идет запись
 void RingBuffer::IncreaseIndexWrite()
 {
+	//TODO: дубль
 	IndexWrite = (IndexWrite + 1) % Size;
 }
 
 // Увеличение индекса, с которого идет чтение
 void RingBuffer::IncreaseIndexRead()
 {
+	//TODO: дубль
 	IndexRead = (IndexRead + 1) % Size;
 }
 

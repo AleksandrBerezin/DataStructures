@@ -45,7 +45,6 @@ void Menu(Stack*& stack)
 			}
 			case 2:
 			{
-				//TODO: Дубль(Done)
 				if (IsStackNotCreateOrEmpty(stack))
 				{
 					break;
@@ -66,7 +65,6 @@ void Menu(Stack*& stack)
 				break;
 			case 4:
 			{
-				//TODO: Дубль(Done)
 				if (IsStackNotCreate(stack))
 				{
 					break;
@@ -79,7 +77,6 @@ void Menu(Stack*& stack)
 			}
 			case 5:
 			{
-				//TODO: Дубль(Done)
 				if (IsStackNotCreate(stack))
 				{
 					break;

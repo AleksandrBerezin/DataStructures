@@ -124,7 +124,7 @@ void Menu(RingBuffer*& ringBuffer)
 //Проверка, что стек не создан или пуст
 bool IsRingBufferNotCreateOrEmpty(RingBuffer* ringBuffer)
 {
-	if (ringBuffer == nullptr || ringBuffer->IsEmpty())
+	if (IsRingBufferNotCreate(ringBuffer) || ringBuffer->IsEmpty())
 	{
 		cout << "Кольцевой буфер пуст.\n";
 		return true;

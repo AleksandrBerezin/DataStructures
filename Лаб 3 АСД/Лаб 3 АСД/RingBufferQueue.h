@@ -4,7 +4,6 @@
 
 struct RingBufferQueue
 {
-	//TODO: Naming(Done)
 	RingBuffer* Buffer;
 
 	void Enqueue(int element);
