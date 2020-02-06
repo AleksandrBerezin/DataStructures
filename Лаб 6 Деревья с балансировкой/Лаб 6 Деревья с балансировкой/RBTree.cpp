@@ -79,7 +79,7 @@ void RBTree::Insert(int key)
 {
 	RBTreeNode* node = CreateNode(key);
 
-	if (IsEmpty())	// Дерево пустое
+	if (IsEmpty())
 	{
 		Root = node;
 	}
@@ -122,36 +122,30 @@ void RBTree::FixInsertion(RBTreeNode* node)
 		node->IsBlack = true;
 		return;
 	}
-	//TODO: Почему здесь?
-	RBTreeNode* parent;
-	RBTreeNode* grandpa;
-	RBTreeNode* uncle;
-	//TODO: Naming
-	while (node->Parent->IsBlack == false)	// Отец красный
+
+	while (node->Parent->IsBlack == false)
 	{
-		parent = node->Parent;
-		grandpa = parent->Parent;
+		RBTreeNode* parent = node->Parent;
+		RBTreeNode* grandpa = parent->Parent;
 
 		if (grandpa == Nil)
 		{
 			break;
 		}
 
-		// Отец является левым ребенком
 		if (parent == grandpa->Left)
 		{
-			uncle = grandpa->Right;
-			//TODO: Зачем эти комментарии?
-			if (uncle->IsBlack == false)	// Дядя красный
+			RBTreeNode* uncle = grandpa->Right;
+			
+			if (uncle->IsBlack == false)
 			{
 				parent->IsBlack = true;
 				uncle->IsBlack = true;
 				grandpa->IsBlack = false;
 				node = grandpa;
 			}
-			else	// Дядя черный
+			else
 			{
-				// Узел является правым ребенком, отец и сын с разных сторон
 				if (node == parent->Right)	
 				{
 					node = parent;
@@ -162,21 +156,19 @@ void RBTree::FixInsertion(RBTreeNode* node)
 				RotateRight(node->Parent->Parent);
 			}
 		}
-		// Отец является правым ребенком
 		else
 		{
-			uncle = grandpa->Left;
-			//TODO: Зачем эти комментарии?
-			if (uncle->IsBlack == false)	// Дядя красный
+			RBTreeNode* uncle = grandpa->Left;
+
+			if (uncle->IsBlack == false)
 			{
 				parent->IsBlack = true;
 				uncle->IsBlack = true;
 				grandpa->IsBlack = false;
 				node = grandpa;
 			}
-			else	// Дядя черный
+			else
 			{
-				// Узел является левым ребенком, отец и сын в разных сторонах
 				if (node == parent->Left)	
 				{
 					node = parent;
@@ -224,10 +216,6 @@ RBTreeNode* RBTree::Find(int key)
 // Удаление узла по ключу
 void RBTree::Remove(int key)
 {
-	//TODO: Naming
-	RBTreeNode* node;	// Удаляем
-	RBTreeNode* newNode;	// Ставим на его место
-
 	RBTreeNode* current = Root;
 
 	while (current->Key != key)
@@ -247,54 +235,56 @@ void RBTree::Remove(int key)
 		}
 	}
 	
+	RBTreeNode* deletedNode;
 	// node имеет ребенка Nil 
 	if (current->Left == Nil || current->Right == Nil) 
 	{
-		node = current;
+		deletedNode = current;
 	}
 	else // Ищем потомка с ребенком Nil
 	{
-		node = current->Right;
-		while (node->Left != Nil)
+		deletedNode = current->Right;
+		while (deletedNode->Left != Nil)
 		{
-			node = node->Left;
+			deletedNode = deletedNode->Left;
 		}
 	}
 
+	RBTreeNode* newNode;
 	// newNode - единственный ребенок node
-	if (node->Left != Nil)
+	if (deletedNode->Left != Nil)
 	{
-		newNode = node->Left;
+		newNode = deletedNode->Left;
 	}
 	else
 	{
-		newNode = node->Right;
+		newNode = deletedNode->Right;
 	}	
 
 	// Убираем указатели на node
-	newNode->Parent = node->Parent;
-	if (node->Parent != Nil)
+	newNode->Parent = deletedNode->Parent;
+	if (deletedNode->Parent != Nil)
 	{
-		//TODO: Formatting
-		node->Parent->Left == node ? node->Parent->Left = newNode :
-			node->Parent->Right = newNode;
+		deletedNode->Parent->Left == deletedNode 
+			? deletedNode->Parent->Left = newNode 
+			: deletedNode->Parent->Right = newNode;
 	}	
 	else
 	{
 		Root = newNode;
 	}
 		
-	if (node != current)
+	if (deletedNode != current)
 	{
-		current->Key = node->Key;
+		current->Key = deletedNode->Key;
 	}
 
-	if (node->IsBlack)
+	if (deletedNode->IsBlack)
 	{
 		FixRemoving(newNode);
 	}
 	
-	delete node;
+	delete deletedNode;
 }
 
 // Балансировка для операции удаления
@@ -302,12 +292,12 @@ void RBTree::FixRemoving(RBTreeNode* node)
 {
 	while (node != Root && node->IsBlack == true)
 	{
-		RBTreeNode* brother;
 		RBTreeNode* parent = node->Parent;
-		//TODO: Зачем эти комментарии?
-		if (node == parent->Left)	// Узел является левым ребенком
+
+		if (node == parent->Left)
 		{
-			brother = parent->Right;
+			RBTreeNode* brother = parent->Right;
+
 			if (brother->IsBlack == false)
 			{
 				brother->IsBlack = true;
@@ -315,7 +305,6 @@ void RBTree::FixRemoving(RBTreeNode* node)
 				RotateLeft(parent);
 				brother = parent->Right;
 			}
-			// Брат с черными детьми
 			if (brother->Left->IsBlack && brother->Right->IsBlack)
 			{
 				brother->IsBlack = false;
@@ -323,7 +312,6 @@ void RBTree::FixRemoving(RBTreeNode* node)
 			}
 			else
 			{
-				// Брат с черным правым ребенком
 				if (brother->Right->IsBlack == true)
 				{
 					brother->Left->IsBlack = true;
@@ -332,7 +320,6 @@ void RBTree::FixRemoving(RBTreeNode* node)
 					brother = parent->Right;
 				}
 
-				// Брат с красным правым ребенком
 				brother->IsBlack = parent->IsBlack;
 				parent->IsBlack = true;
 				brother->Right->IsBlack = true;
@@ -340,9 +327,9 @@ void RBTree::FixRemoving(RBTreeNode* node)
 				node = Root;
 			}
 		}
-		else	// Узел является правым ребенком
+		else
 		{
-			brother = parent->Left;
+			RBTreeNode* brother = parent->Left;
 			if (brother->IsBlack == false)
 			{
 				brother->IsBlack = true;
@@ -350,7 +337,6 @@ void RBTree::FixRemoving(RBTreeNode* node)
 				RotateRight(parent);
 				brother = parent->Left;
 			}
-			// Брат с черными детьми
 			if (brother->Left->IsBlack && brother->Right->IsBlack)
 			{
 				brother->IsBlack = false;
@@ -358,7 +344,6 @@ void RBTree::FixRemoving(RBTreeNode* node)
 			}
 			else
 			{
-				// Брат с черным левым ребенком
 				if (brother->Left->IsBlack == true)
 				{
 					brother->Right->IsBlack = true;
@@ -367,7 +352,6 @@ void RBTree::FixRemoving(RBTreeNode* node)
 					brother = parent->Left;
 				}
 
-				// Брат с красным левым ребенком
 				brother->IsBlack = parent->IsBlack;
 				parent->IsBlack = true;
 				brother->Left->IsBlack = true;

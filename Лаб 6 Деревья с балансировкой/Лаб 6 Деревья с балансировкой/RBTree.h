@@ -1,10 +1,11 @@
 #pragma once
+#include "RBTreeNode.h"
+
 struct RBTree
 {
-	//TODO: Зачем эти комментарии?
-	RBTreeNode* Root;	// Корень дерева
-	RBTreeNode* Nil;	// Фиктивный узел
-	int CountRotate;	// Количество поворотов
+	RBTreeNode* Root;
+	RBTreeNode* Nil;
+	int CountRotate;
 
 	RBTreeNode* CreateNode(int key);
 	void RotateLeft(RBTreeNode* node);

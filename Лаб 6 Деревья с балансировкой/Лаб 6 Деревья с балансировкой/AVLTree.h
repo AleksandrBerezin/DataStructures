@@ -1,9 +1,10 @@
 #pragma once
+#include "AVLTreeNode.h"
+
 struct AVLTree
 {
-	//TODO: Зачем эти комментарии?
-	AVLTreeNode* Root = nullptr;	// Корень дерева
-	int CountRotate = 0;	// Количество поворотов
+	AVLTreeNode* Root = nullptr;
+	int CountRotate = 0;
 
 	AVLTreeNode* RotateLeft(AVLTreeNode* node);
 	AVLTreeNode* RotateRight(AVLTreeNode* node);
