@@ -37,6 +37,21 @@ void Menu(BinaryTree*& binaryTree)
 				int key = InputInt();
 				cout << "\n";
 
+				BinaryTreeNode* node;
+
+				do
+				{
+					node = binaryTree->Find(key);
+
+					if (node == nullptr)
+					{
+						cout << "Элемент с таким ключем присутствует "
+							<< "в дереве, введите другой ключ: ";
+						key = InputInt();
+						cout << "\n";
+					}
+				} while (node != nullptr);
+
 				binaryTree->Insert(key);
 				Print(binaryTree->Root, 0);
 				break;
@@ -51,6 +66,21 @@ void Menu(BinaryTree*& binaryTree)
 				cout << "Введите ключ элемента: ";
 				int key = InputInt();
 				cout << "\n";
+
+				BinaryTreeNode* node;
+
+				do
+				{
+					node = binaryTree->Find(key);
+
+					if (node == nullptr)
+					{
+						cout << "Элемента с таким ключем нет "
+							<< "в дереве, введите другой ключ: ";
+						key = InputInt();
+						cout << "\n";
+					}
+				} while (node == nullptr);
 
 				binaryTree->Remove(key);
 				Print(binaryTree->Root, 0);

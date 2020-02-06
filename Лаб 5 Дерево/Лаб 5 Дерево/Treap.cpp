@@ -147,27 +147,14 @@ void Treap::SlowRemove(int key)
 	TreapNode* leftTreeWithoutKey = nullptr;
 	TreapNode* treeContainOnlyKey = nullptr;
 	Split(left, key - 1, leftTreeWithoutKey, treeContainOnlyKey);
-	
-	if (treeContainOnlyKey == nullptr)
-	{
-		cout << "Такого элемента нет.\n\n";
-		return;
-	}
 
 	Root = Merge(leftTreeWithoutKey, right);
-
 	delete treeContainOnlyKey;
 }
 
 // Оптимизированное удаление (1 Merge)
 void Treap::FastRemove(TreapNode* node, TreapNode* parent, int key)
 {
-	//TODO: Ответственности
-	if (node == nullptr)
-	{
-		cout << "Такого элемента нет.\n\n";
-		return;
-	}
 	if (key < node->Key)
 	{
 		return FastRemove(node->Left, node, key);
@@ -182,8 +169,9 @@ void Treap::FastRemove(TreapNode* node, TreapNode* parent, int key)
 		
 		if (parent != nullptr)
 		{
-			parent->Left == node ? parent->Left = newNode : 
-				parent->Right = newNode;
+			parent->Left == node 
+				? parent->Left = newNode 
+				: parent->Right = newNode;
 		}
 		else
 		{

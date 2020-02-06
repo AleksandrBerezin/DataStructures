@@ -85,6 +85,7 @@ void Menu(Treap*& treap)
 						cout << "\n";
 					}
 				} while (node != nullptr);
+
 				srand(time(nullptr));
 				int priority = rand() % 100;
 
@@ -103,6 +104,21 @@ void Menu(Treap*& treap)
 				int key = InputInt();
 				cout << "\n";
 
+				TreapNode* node;
+
+				do
+				{
+					node = treap->Find(key);
+
+					if (node != nullptr)
+					{
+						cout << "Элемента с таким ключем нет "
+							<< "в дереве, введите другой ключ: ";
+						key = InputInt();
+						cout << "\n";
+					}
+				} while (node == nullptr);
+
 				treap->SlowRemove(key);
 				Print(treap->Root, 0);
 				break;
@@ -117,6 +133,21 @@ void Menu(Treap*& treap)
 				cout << "Введите ключ элемента: ";
 				int key = InputInt();
 				cout << "\n";
+
+				TreapNode* node;
+
+				do
+				{
+					node = treap->Find(key);
+
+					if (node != nullptr)
+					{
+						cout << "Элемента с таким ключем нет "
+							<< "в дереве, введите другой ключ: ";
+						key = InputInt();
+						cout << "\n";
+					}
+				} while (node == nullptr);
 
 				treap->FastRemove(treap->Root, nullptr, key);
 				Print(treap->Root, 0);

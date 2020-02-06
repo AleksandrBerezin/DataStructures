@@ -82,15 +82,10 @@ void BinaryTree::Insert(int key)
 		{
 			node = node->Right;
 		}
-		else if (key > node->Key)
+		else
 		{
 			node->Right = new BinaryTreeNode(key);
 			break;
-		}
-		else
-		{
-			cout << "Элемент с таким ключом присутствует в дереве.\n\n";
-			return;
 		}
 	}
 
@@ -196,12 +191,6 @@ void BinaryTree::Remove(int key)
 				return;
 			}
 		}
-	}
-
-	if (node == nullptr)
-	{
-		cout << "Такого элемента нет.";
-		return;
 	}
 }
 
