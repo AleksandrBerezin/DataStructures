@@ -187,12 +187,11 @@ int main()
 //Проверка, что вводимое число int
 int Input()
 {
-	//TODO: Naming()
-	int input = 0;
+	int number = 0;
 
 	while (true)
 	{
-		cin >> input;
+		cin >> number;
 		if (cin.fail())
 		{
 			cin.clear();
@@ -205,7 +204,7 @@ int Input()
 		}
 	}
 
-	return input;
+	return number;
 }
 
 //Проверка, что массив не создан или пуст
