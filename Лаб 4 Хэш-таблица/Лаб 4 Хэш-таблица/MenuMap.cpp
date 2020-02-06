@@ -42,7 +42,6 @@ void Menu(Map*& map)
 			}
 			case 2:
 			{
-				//TODO: Дубль(Done)
 				if (IsMapNotCreateOrEmpty(map))
 				{
 					break;
@@ -57,7 +56,6 @@ void Menu(Map*& map)
 			}
 			case 3:
 			{
-				//TODO: Дубль
 				if (IsMapNotCreateOrEmpty(map))
 				{
 					break;
@@ -93,7 +91,6 @@ void Menu(Map*& map)
 			}
 			case 5:
 			{
-				//TODO: Дубль(Done)
 				if (IsMapNotCreate(map))
 				{
 					break;

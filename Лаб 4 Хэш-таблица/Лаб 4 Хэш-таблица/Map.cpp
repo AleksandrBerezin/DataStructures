@@ -40,7 +40,7 @@ void Map::Delete()
 // Проверка: содержит словарь ключ или нет
 bool Map::Contains(string* key)
 {
-	int hash = InternalHashTable->HashCalculate(key);
+	int hash = InternalHashTable->CountHash(key);
 	Node* current = &InternalHashTable->KeyValueArray[hash];
 
 	while (current != nullptr)

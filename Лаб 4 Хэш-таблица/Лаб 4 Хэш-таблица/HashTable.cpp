@@ -28,7 +28,7 @@ void HashTable::Add(string* key, string* value)
 		Rehashing();
 	}
 
-	int hash = HashCalculate(key);
+	int hash = CountHash(key);
 
 	if (KeyValueArray[hash].Key.empty())
 	{
@@ -45,7 +45,7 @@ void HashTable::Add(string* key, string* value)
 // Удаление из таблицы набора key-value
 void HashTable::Remove(string* key)
 {
-	int hash = HashCalculate(key);
+	int hash = CountHash(key);
 
 	if (KeyValueArray[hash].Key.empty())
 	{
@@ -99,7 +99,7 @@ void HashTable::Remove(string* key)
 // Поиск value по key
 string HashTable::Find(string* key)
 {
-	int hash = HashCalculate(key);
+	int hash = CountHash(key);
 	Node* current = &KeyValueArray[hash];
 
 	while (current != nullptr)
@@ -118,7 +118,7 @@ string HashTable::Find(string* key)
 // h(k) = (s0 * a^0 + s1 * a^1 + ... s(n-1) * a^(n-1) +sn * a ^ n) % m
 // a и m - взаимно простые
 // sn - символ под индексом n, m - размер таблицы
-int HashTable::HashCalculate(string* key)
+int HashTable::CountHash(string* key)
 {
 	int hash = 0;
 	//TODO: Naming(Done)

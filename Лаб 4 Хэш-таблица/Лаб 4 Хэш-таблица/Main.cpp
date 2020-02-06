@@ -17,12 +17,10 @@ int main()
 	Map* map = new Map();
 	HashTable* hashTable = new HashTable();
 
-	//TODO: Naming(Done)
 	bool isExit = false;
 
 	while (!isExit)
 	{
-		//TODO: Ответственности. Есть смысл разнести меню для ХТ и для словаря
 		cout << "\nВыберите структуру данных для работы:\n";
 		cout << "1. Словарь.\n"
 			<< "2. Хэш-таблица.\n"

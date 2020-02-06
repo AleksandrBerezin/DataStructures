@@ -42,7 +42,6 @@ void Menu(HashTable*& hashTable)
 			}
 			case 2:
 			{
-				//TODO: Дубль(Done)
 				if (IsHashTableNotCreateOrEmpty(hashTable))
 				{
 					break;
@@ -57,7 +56,6 @@ void Menu(HashTable*& hashTable)
 			}
 			case 3:
 			{
-				//TODO: Дубль(Done)
 				if (IsHashTableNotCreateOrEmpty(hashTable))
 				{
 					break;
@@ -93,7 +91,6 @@ void Menu(HashTable*& hashTable)
 			}
 			case 5:
 			{
-				//TODO: Дубль(Done)
 				if (IsHashTableNotCreate(hashTable))
 				{
 					break;

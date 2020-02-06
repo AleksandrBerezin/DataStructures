@@ -5,9 +5,9 @@ using std::string;
 
 struct Map
 {
-	//TODO: Naming(Done)
 	HashTable* InternalHashTable;
 
+	//TODO:references
 	void Add(string* key, string* value);
 	void Remove(string* key);
 	string Find(string* key);
