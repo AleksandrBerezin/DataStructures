@@ -1,7 +1,7 @@
 #include "AVLTreeNode.h"
 
 // Вычисление balance factor(разность высот поддеревьев) заданного узла
-int AVLTreeNode::BalanceFactor()
+int AVLTreeNode::CountBalanceFactor()
 {
 	if (Left == nullptr && Right == nullptr)
 	{
@@ -38,8 +38,8 @@ void AVLTreeNode::FixHeight()
 	}
 	else
 	{
-		//TODO: Formatting
-		Height = (Left->Height > Right->Height ? Left->Height :
-			Right->Height) + 1;
+		Height = Left->Height > Right->Height 
+			? Left->Height + 1 
+			: Right->Height + 1;
 	}
 }

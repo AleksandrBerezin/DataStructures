@@ -37,30 +37,29 @@ AVLTreeNode* AVLTree::Balance(AVLTreeNode* node)
 {
 	node->FixHeight();
 
-	//TODO: Naming
-	int balenceFactor = node->BalanceFactor();
+	int balanceFactor = node->CountBalanceFactor();
 
-	if (balenceFactor == -2)
+	if (balanceFactor == -2)
 	{
-		if (node->Right->BalanceFactor() > 0)
+		if (node->Right->CountBalanceFactor() > 0)
 		{
 			node->Right = RotateRight(node->Right);
 		}
 
 		return RotateLeft(node);
 	}
-	if (balenceFactor == 2)
+	if (balanceFactor == 2)
 	{
 
-		if (node->Left->BalanceFactor() < 0)
+		if (node->Left->CountBalanceFactor() < 0)
 		{
 			node->Left = RotateLeft(node->Left);
 		}
 
 		return RotateRight(node);
 	}
-
-	return node;	// Балансировка не нужна
+	// Балансировка не нужна
+	return node;	
 }
 
 // Вставка узла по ключу
