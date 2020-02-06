@@ -19,7 +19,6 @@ int main()
 	setlocale(LC_ALL, "Russian");
 
 	List* list = new List();
-	//TODO: Naming(Done)
 	bool isExit = false;
 
 	while (!isExit)
@@ -41,7 +40,6 @@ int main()
 		{
 			case 1:
 			{
-					//TODO: Дубль(Done)
 				CheckListOnCreate(list);
 
 				cout << "Введите значение элемента:\n";
@@ -51,7 +49,6 @@ int main()
 			}
 			case 2:
 			{
-					//TODO: Дубль(Done)
 				if (IsListNotCreateOrEmpty(list))
 				{
 					break;
@@ -73,7 +70,6 @@ int main()
 			}
 			case 3:
 			{
-					//TODO: Дубль(Done)
 				CheckListOnCreate(list);
 
 				cout << "Введите значение элемента:\n";
@@ -83,7 +79,6 @@ int main()
 			}
 			case 4:
 			{
-					//TODO: Дубль(Done)
 				CheckListOnCreate(list);
 
 				cout << "Введите значение элемента:\n";
@@ -93,7 +88,6 @@ int main()
 			}
 			case 5:
 			{
-					//TODO: Дубль(Done)
 				if (IsListNotCreateOrEmpty(list))
 				{
 					break;
@@ -101,7 +95,6 @@ int main()
 
 				int index = InputIndex();
 
-					//TODO: Дубль(Done)
 				FindCorrectIndex(list, &index);
 
 				int value = InputValue();
@@ -112,18 +105,14 @@ int main()
 			}
 			case 6:
 			{
-					//TODO: Дубль(Done)
 				if (IsListNotCreateOrEmpty(list))
 				{
 					break;
 				}
 
-					//TODO: Дубль(Done)
 				int index = InputIndex();
 
-					//TODO: Дубль(Done)
 				FindCorrectIndex(list, &index);
-				//TODO: Дубль(Done)
 				int value = InputValue();
 
 				list->InsertBefore(index, value);
@@ -132,7 +121,6 @@ int main()
 			}
 			case 7:
 			{
-				//TODO: Дубль(Done)
 				if (IsListNotCreateOrEmpty(list))
 				{
 					break;
@@ -144,7 +132,6 @@ int main()
 			}
 			case 8:
 			{
-					//TODO: Дубль(Done)
 				if (IsListNotCreateOrEmpty(list))
 				{
 					break;
@@ -174,7 +161,7 @@ int main()
 				list = new List();
 
 				cout << "Введите количество элементов списка:\n";
-					//TODO: Naming(Done)
+
 				int count = Input();
 
 				for (int i = 0; i < count; i++)
@@ -182,7 +169,7 @@ int main()
 					list->Add(i);
 				}
 				int middle = list->Length / 2;
-				//TODO: Дубль(Done)
+
 				clock_t begin = clock();
 
 				list->Remove(middle);
@@ -202,7 +189,7 @@ int main()
 				list = new List();
 
 				cout << "Введите количество элементов списка:\n";
-					//TODO: Naming
+
 				int count = Input();
 
 				for (int i = 0; i < count; i++)
@@ -210,7 +197,6 @@ int main()
 					list->Add(i);
 				}
 				int middle = list->Length / 2;
-				//TODO: Дубль(Done)
 				clock_t begin = clock();
 
 				list->InsertAfter(middle, 1);
