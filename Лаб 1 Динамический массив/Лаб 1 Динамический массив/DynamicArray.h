@@ -24,5 +24,3 @@ struct DynamicArray
 		IsSorted = false;
 	}
 };
-
-void Print(DynamicArray* array);

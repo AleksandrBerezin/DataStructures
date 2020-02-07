@@ -12,5 +12,3 @@ struct BinaryTree
 	void Clear(BinaryTreeNode* node);
 	bool IsEmpty();
 };
-
-void Print(BinaryTreeNode* node, int level);

@@ -3,13 +3,10 @@
 #include "AVLTree.h"
 #include "AVLTreeNode.h"
 #include "MenuAVLTree.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\AVLTreeLibrary.h"
 
 using namespace std;
-
-bool IsAVLTreeNotCreateOrEmpty(AVLTree* avlTree);
-void ShowFunctionRunTimeAndCountRotate(AVLTree* avlTree, clock_t begin);
-void InsertCountElement(AVLTree* avlTree, int count);
 
 void Menu(AVLTree*& avlTree)
 {
@@ -36,8 +33,7 @@ void Menu(AVLTree*& avlTree)
 					avlTree = new AVLTree();
 				}
 
-				cout << "Введите значение элемента: ";
-				int value = InputInt();
+				int value = InputIntValue();
 				cout << "\n";
 
 				AVLTreeNode* node;
@@ -66,8 +62,7 @@ void Menu(AVLTree*& avlTree)
 					break;
 				}
 
-				cout << "Введите значение элемента: ";
-				int value = InputInt();
+				int value = InputIntValue();
 				cout << "\n";
 
 				AVLTreeNode* node;
@@ -96,8 +91,7 @@ void Menu(AVLTree*& avlTree)
 					break;
 				}
 
-				cout << "Введите ключ элемента: ";
-				int key = InputInt();
+				int key = InputIntKey();
 				cout << "\n";
 
 				AVLTreeNode* node = avlTree->Find(key);
@@ -164,7 +158,6 @@ void Menu(AVLTree*& avlTree)
 				avlTree = new AVLTree();
 
 				cout << "Введите количество элементов дерева: \n";
-				
 				int count = InputInt();
 				//TODO: дубль(Done)
 				InsertCountElement(avlTree, count);
@@ -197,35 +190,4 @@ void Menu(AVLTree*& avlTree)
 	}
 
 	return;
-}
-
-//Проверка, что стек не создан или пуст
-bool IsAVLTreeNotCreateOrEmpty(AVLTree* avlTree)
-{
-	if (avlTree == nullptr || avlTree->IsEmpty())
-	{
-		cout << "Дерево пустое.\n";
-		return true;
-	}
-
-	return false;
-}
-
-//Вычисление времени работы функции
-void ShowFunctionRunTimeAndCountRotate(AVLTree* avlTree, clock_t begin)
-{
-	clock_t end = clock();
-
-	double seconds = double(end - begin) / CLOCKS_PER_SEC;
-	cout << "Время - " << seconds << " секунд;\n";
-	cout << "Количество поворотов - " << avlTree->CountRotate
-		<< ".\n";
-}
-
-void InsertCountElement(AVLTree* avlTree, int count)
-{
-	for (int i = 0; i < count; i++)
-	{
-		avlTree->Root = avlTree->Insert(avlTree->Root, i);
-	}
 }

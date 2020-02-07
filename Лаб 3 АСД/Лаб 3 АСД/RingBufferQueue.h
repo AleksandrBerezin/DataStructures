@@ -1,6 +1,5 @@
 #pragma once
 #include "RingBuffer.h"
-#include "RingBufferQueue.h"
 
 struct RingBufferQueue
 {
@@ -16,5 +15,3 @@ struct RingBufferQueue
 		Buffer = new RingBuffer;
 	}
 };
-
-void Print(RingBufferQueue* ringBuffer);

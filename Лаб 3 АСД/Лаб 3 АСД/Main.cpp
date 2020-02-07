@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-#include "Constant.h"
 #include "Stack.h"
 #include "RingBuffer.h"
 #include "RingBufferQueue.h"
@@ -8,7 +7,7 @@
 #include "MenuRingBuffer.h"
 #include "MenuRingBufferQueue.h"
 #include "MenuTwoStackQueue.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
 
 using namespace std;
 
@@ -30,7 +29,7 @@ int main()
 			<< "4. Очередь на базе 2 стеков.\n"
 			<< "0. Выход.\n\n";
 		bool isBack = false;
-		switch (Input())
+		switch (InputInt())
 		{
 			case 1:
 			{

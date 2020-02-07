@@ -2,11 +2,10 @@
 #include "Treap.h"
 #include "TreapNode.h"
 #include "MenuTreap.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\TreapLibrary.h"
 
 using namespace std;
-
-bool IsTreapNotCreateOrEmpty(Treap* treap);
 
 void Menu(Treap*& treap)
 {
@@ -37,8 +36,7 @@ void Menu(Treap*& treap)
 					treap = new Treap();
 				}
 
-				cout << "Введите ключ элемента: ";
-				int key = InputInt();
+				int key = InputIntKey();
 				cout << "\n";
 
 				TreapNode* node;
@@ -67,8 +65,7 @@ void Menu(Treap*& treap)
 					treap = new Treap();
 				}
 
-				cout << "Введите ключ элемента: ";
-				int key = InputInt();
+				int key = InputIntKey();
 				cout << "\n";
 
 				TreapNode* node;
@@ -100,8 +97,7 @@ void Menu(Treap*& treap)
 					break;
 				}
 
-				cout << "Введите ключ элемента: ";
-				int key = InputInt();
+				int key = InputIntKey();
 				cout << "\n";
 
 				TreapNode* node;
@@ -130,8 +126,7 @@ void Menu(Treap*& treap)
 					break;
 				}
 
-				cout << "Введите ключ элемента: ";
-				int key = InputInt();
+				int key = InputIntKey();
 				cout << "\n";
 
 				TreapNode* node;
@@ -160,8 +155,7 @@ void Menu(Treap*& treap)
 					break;
 				}
 
-				cout << "Введите ключ элемента: ";
-				int key = InputInt();
+				int key = InputIntKey();
 
 				TreapNode* node = treap->Find(key);
 
@@ -214,16 +208,4 @@ void Menu(Treap*& treap)
 	}
 
 	return;
-}
-
-//Проверка, что стек не создан или пуст
-bool IsTreapNotCreateOrEmpty(Treap* treap)
-{
-	if (treap == nullptr || treap->IsEmpty())
-	{
-		cout << "Дерево пустое.\n";
-		return true;
-	}
-
-	return false;
 }

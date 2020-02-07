@@ -78,22 +78,3 @@ void RingBuffer::IncreaseIndex(int& index)
 	//TODO: дубль(Done)
 	index = (index + 1) % Size;
 }
-
-// Вывод на экран
-void Print(RingBuffer* RingBuf)
-{
-	if (RingBuf->IsEmpty())
-	{
-		cout << "Кольцевой буфер пуст.\n";
-		return;
-	}
-
-	int read = RingBuf->IndexRead;
-	cout << "Кольцевой буфер: ";
-	for (int i = 0; i < RingBuf->CurrentLength; i++)
-	{
-		cout << RingBuf->Buffer[read] << " ";
-		read = (read + 1) % RingBuf->Size;
-	}
-	cout << "\n";
-}

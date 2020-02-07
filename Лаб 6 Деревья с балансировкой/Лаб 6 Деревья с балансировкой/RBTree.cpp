@@ -383,22 +383,3 @@ bool RBTree::IsEmpty()
 {
 	return Root == Nil;
 }
-
-// Вывод дерева
-void Print(RBTree* rbTree, RBTreeNode* node, int level)
-{
-	if (node != rbTree->Nil)
-	{
-		Print(rbTree, node->Right, level + 1);
-
-		for (int i = 0; i < level; i++)
-		{
-			cout << "\t";
-		}
-
-		string color = node->IsBlack ? "B" : "R";
-		cout << node->Key << " : " << color <<  "\n";
-
-		Print(rbTree, node->Left, level + 1);
-	}
-}

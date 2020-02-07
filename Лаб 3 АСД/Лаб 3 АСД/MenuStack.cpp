@@ -1,12 +1,10 @@
 #include <iostream>
 #include "Stack.h"
 #include "MenuStack.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\StackLibrary.h"
 
 using namespace std;
-
-bool IsStackNotCreateOrEmpty(Stack* stack);
-bool IsStackNotCreate(Stack* stack);
 
 void Menu(Stack*& stack)
 {
@@ -22,7 +20,7 @@ void Menu(Stack*& stack)
 			<< "5. Вывод стека на экран.\n"
 			<< "0. Назад.\n\n";
 
-		switch (Input())
+		switch (InputInt())
 		{
 			case 1:
 			{
@@ -38,8 +36,8 @@ void Menu(Stack*& stack)
 					break;
 				}
 
-				cout << "Введите значение элемента:\n";
-				stack->Push(Input());
+				int value = InputIntValue();
+				stack->Push(value);
 				Print(stack);
 				break;
 			}
@@ -99,28 +97,4 @@ void Menu(Stack*& stack)
 	}
 
 	return;
-}
-
-//Проверка, что стек не создан или пуст
-bool IsStackNotCreateOrEmpty(Stack* stack)
-{
-	if (stack == nullptr || stack->IsEmpty())
-	{
-		cout << "Стек пуст.\n";
-		return true;
-	}
-
-	return false;
-}
-
-//Проверка, что стек не создан
-bool IsStackNotCreate(Stack* stack)
-{
-	if (stack == nullptr)
-	{
-		cout << "Стек пуст.\n";
-		return true;
-	}
-
-	return false;
 }

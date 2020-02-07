@@ -2,11 +2,10 @@
 #include "BinaryTree.h"
 #include "BinaryTreeNode.h"
 #include "MenuBinaryTree.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\BinaryTreeLibrary.h"
 
 using namespace std;
-
-bool IsBinaryTreeNotCreateOrEmpty(BinaryTree* binaryTree);
 
 void Menu(BinaryTree*& binaryTree)
 {
@@ -33,8 +32,7 @@ void Menu(BinaryTree*& binaryTree)
 					binaryTree = new BinaryTree();
 				}
 
-				cout << "Введите ключ элемента: ";
-				int key = InputInt();
+				int key = InputIntKey();
 				cout << "\n";
 
 				BinaryTreeNode* node;
@@ -63,8 +61,7 @@ void Menu(BinaryTree*& binaryTree)
 					break;
 				}
 
-				cout << "Введите ключ элемента: ";
-				int key = InputInt();
+				int key = InputIntKey();
 				cout << "\n";
 
 				BinaryTreeNode* node;
@@ -93,8 +90,7 @@ void Menu(BinaryTree*& binaryTree)
 					break;
 				}
 
-				cout << "Введите ключ элемента: ";
-				int key = InputInt();
+				int key = InputIntKey();
 				cout << "\n";
 
 				BinaryTreeNode* node = binaryTree->Find(key);
@@ -177,16 +173,4 @@ void Menu(BinaryTree*& binaryTree)
 	}
 
 	return;
-}
-
-//Проверка, что стек не создан или пуст
-bool IsBinaryTreeNotCreateOrEmpty(BinaryTree* binaryTree)
-{
-	if (binaryTree == nullptr || binaryTree->IsEmpty())
-	{
-		cout << "Дерево пустое.\n";
-		return true;
-	}
-
-	return false;
 }

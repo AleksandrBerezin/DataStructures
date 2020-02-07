@@ -26,5 +26,3 @@ struct RBTree
 		CountRotate = 0;
 	}
 };
-
-void Print(RBTree* rbTree, RBTreeNode* node, int level);

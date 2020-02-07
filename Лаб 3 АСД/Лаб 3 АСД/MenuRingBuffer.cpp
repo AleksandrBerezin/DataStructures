@@ -1,12 +1,10 @@
 #include <iostream>
 #include "RingBuffer.h"
 #include "MenuRingBuffer.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\RingBufferLibrary.h"
 
 using namespace std;
-
-bool IsRingBufferNotCreateOrEmpty(RingBuffer* ringBuffer);
-bool IsRingBufferNotCreate(RingBuffer* ringBuffer);
 
 void Menu(RingBuffer*& ringBuffer)
 {
@@ -24,8 +22,7 @@ void Menu(RingBuffer*& ringBuffer)
 			<< "7. Вывод кольцевого буфера на экран.\n"
 			<< "0. Назад.\n\n";
 
-		int variant = Input();
-		switch (variant)
+		switch (InputInt())
 		{
 			case 1:
 			{
@@ -34,8 +31,8 @@ void Menu(RingBuffer*& ringBuffer)
 					ringBuffer = new RingBuffer();
 				}
 
-				cout << "Введите значение элемента:\n";
-				ringBuffer->Push(Input());
+				int value = InputIntValue();
+				ringBuffer->Push(value);
 				Print(ringBuffer);
 				break;
 			}
@@ -119,28 +116,4 @@ void Menu(RingBuffer*& ringBuffer)
 	}
 
 	return;
-}
-
-//Проверка, что стек не создан или пуст
-bool IsRingBufferNotCreateOrEmpty(RingBuffer* ringBuffer)
-{
-	if (IsRingBufferNotCreate(ringBuffer) || ringBuffer->IsEmpty())
-	{
-		cout << "Кольцевой буфер пуст.\n";
-		return true;
-	}
-
-	return false;
-}
-
-//Проверка, что стек не создан
-bool IsRingBufferNotCreate(RingBuffer* ringBuffer)
-{
-	if (ringBuffer == nullptr)
-	{
-		cout << "Кольцевой буфер пуст.\n";
-		return true;
-	}
-
-	return false;
 }

@@ -33,5 +33,3 @@ struct HashTable
 		Init();
 	}
 };
-
-void Print(HashTable* hashTable);

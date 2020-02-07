@@ -1,14 +1,11 @@
 ﻿#include <iostream>
-#include <string>
-#include "Node.h"
 #include "HashTable.h"
 #include "Map.h"
-#include "Functions.h"
 #include "MenuMap.h"
 #include "MenuHashTable.h"
+#include "..\..\Libraries\CommonLibrary.h"
 
 using namespace std;
-using std::string;
 
 int main()
 {

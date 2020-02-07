@@ -5,7 +5,7 @@
 #include "RBTree.h"
 #include "MenuAVLTree.h"
 #include "MenuRBTree.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
 
 using namespace std;
 
@@ -24,9 +24,7 @@ int main()
 			<< "2. Красно-черное дерево.\n"
 			<< "0. Выход.\n\n";
 
-		int number = InputInt();
-		bool isBack = false;
-		switch (number)
+		switch (InputInt())
 		{
 			case 1:
 			{

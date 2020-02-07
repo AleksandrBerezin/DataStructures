@@ -1,12 +1,10 @@
 #include <iostream>
 #include "RingBufferQueue.h"
 #include "MenuRingBufferQueue.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\RingQueueLibrary.h"
 
 using namespace std;
-
-bool IsRingQueueNotCreateOrEmpty(RingBufferQueue* ringQueue);
-bool IsRingQueueNotCreate(RingBufferQueue* ringQueue);
 
 void Menu(RingBufferQueue*& ringQueue)
 {
@@ -21,8 +19,7 @@ void Menu(RingBufferQueue*& ringQueue)
 			<< "4. Вывод очереди на экран.\n"
 			<< "0. Назад.\n\n";
 
-		int variant = Input();
-		switch (variant)
+		switch (InputInt())
 		{
 			case 1:
 			{
@@ -31,8 +28,8 @@ void Menu(RingBufferQueue*& ringQueue)
 					ringQueue = new RingBufferQueue();
 				}
 
-				cout << "Введите значение элемента:\n";
-				ringQueue->Enqueue(Input());
+				int value = InputIntValue();
+				ringQueue->Enqueue(value);
 				Print(ringQueue);
 				break;
 			}
@@ -84,28 +81,4 @@ void Menu(RingBufferQueue*& ringQueue)
 	}
 
 	return;
-}
-
-//Проверка, что стек не создан или пуст
-bool IsRingQueueNotCreateOrEmpty(RingBufferQueue* ringQueue)
-{
-	if (ringQueue == nullptr || ringQueue->IsEmpty())
-	{
-		cout << "Очередь пустая.\n";
-		return true;
-	}
-
-	return false;
-}
-
-//Проверка, что стек не создан
-bool IsRingQueueNotCreate(RingBufferQueue* ringQueue)
-{
-	if (ringQueue == nullptr)
-	{
-		cout << "Очередь пустая.\n";
-		return true;
-	}
-
-	return false;
 }

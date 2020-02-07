@@ -1,5 +1,4 @@
 #pragma once
-#include "RingBuffer.h"
 #include "Constant.h"
 
 struct RingBuffer
@@ -29,5 +28,3 @@ struct RingBuffer
 		CurrentLength = 0;
 	}
 };
-
-void Print(RingBuffer* ringBuffer);
