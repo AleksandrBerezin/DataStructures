@@ -151,7 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Functions.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="BinaryTree.cpp" />
     <ClCompile Include="MenuBinaryTree.cpp" />
@@ -161,7 +160,6 @@
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="BinaryTreeNode.h" />
-    <ClInclude Include="Functions.h" />
     <ClInclude Include="MenuBinaryTree.h" />
     <ClInclude Include="MenuTreap.h" />
     <ClInclude Include="Treap.h" />

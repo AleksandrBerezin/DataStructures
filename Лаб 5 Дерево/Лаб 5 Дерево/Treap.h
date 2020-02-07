@@ -16,5 +16,3 @@ struct Treap
 	void Clear(TreapNode* node);
 	bool IsEmpty();
 };
-
-void Print(TreapNode* node, int level);

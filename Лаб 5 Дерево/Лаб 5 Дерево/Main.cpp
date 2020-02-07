@@ -1,12 +1,9 @@
 ﻿#include <iostream>
-#include <ctime>
-#include "BinaryTreeNode.h"
 #include "BinaryTree.h"
-#include "TreapNode.h"
 #include "Treap.h"
 #include "MenuBinaryTree.h"
 #include "MenuTreap.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
 
 using namespace std;
 
