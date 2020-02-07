@@ -143,14 +143,3 @@ bool DynamicArray::IsEmpty()
 {
 	return Length == 0;
 }
-
-//Вывод массива на экран
-void Print(DynamicArray* array) 
-{
-	cout << "\nПолученный массив: ";
-	for (int i = 0; i < array->Length; i++)
-	{
-		cout << array->Array[i] << " ";
-	}
-	cout << "\n";
-}

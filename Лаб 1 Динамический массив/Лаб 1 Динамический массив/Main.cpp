@@ -1,13 +1,9 @@
 ﻿#include "DynamicArray.h"
 #include <iostream>
-#include <cstdlib>
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\DynamicArrayLibrary.h"
 
 using namespace std;
-
-int Input();
-bool IsArrayNotCreateOrEmpty(DynamicArray* array);
-bool IsArrayEmpty(DynamicArray* array);
-void CheckArrayOnCreate(DynamicArray* array);
 
 int main()
 {
@@ -29,14 +25,14 @@ int main()
 			<< "8. Бинарный поиск элемента в массиве.\n"
 			<< "0. Выход.\n\n";
 		
-		switch (Input())
+		switch (InputInt())
 		{
 			case 1:
 			{
 				CheckArrayOnCreate(array);
 
-				cout << "Введите значение элемента:\n";
-				array->Add(Input());
+				int value = InputIntValue();
+				array->Add(value);
 				Print(array);
 				break;
 			}
@@ -52,14 +48,13 @@ int main()
 					break;
 				}
 
-				cout << "Введите индекс элемента, который нужно удалить:\n";
-				int index = Input();
+				int index = InputIndex();
 
 				while (index < 0 || index >= array->Length)
 				{
 					cout << "Вы ввели неверный индекс, "
 						<< "попробуйте еще раз:\n";
-					index = Input();
+					index = InputInt();
 				}
 
 				array->Delete(index);
@@ -70,8 +65,8 @@ int main()
 			{
 				CheckArrayOnCreate(array);
 
-				cout << "Введите значение элемента:\n";
-				array->Insert(Input(), 0);
+				int value = InputIntValue();
+				array->Insert(value, 0);
 				Print(array);
 				break;
 			}
@@ -79,8 +74,8 @@ int main()
 			{
 				CheckArrayOnCreate(array);
 
-				cout << "Введите значение элемента:\n";
-				array->Insert(Input(), array->Length);
+				int value = InputIntValue();
+				array->Insert(value, array->Length);
 				Print(array);
 				break;
 			}
@@ -93,12 +88,10 @@ int main()
 					break;
 				}
 
-				cout << "Введите значение элемента:\n";
-				int element = Input();
-				cout << "Введите индекс элемента:\n";
-				int index = Input();
+				int value = InputIntValue();
+				int index = InputIndex();
 
-				array->Insert(element, index + 1);
+				array->Insert(value, index + 1);
 				Print(array);
 				break;
 			}
@@ -120,8 +113,8 @@ int main()
 					break;
 				}
 
-				cout << "Введите элемент, который нужно найти:\n";
-				int index = array->LineSearch(Input());
+				int value = InputIntValue();
+				int index = array->LineSearch(value);
 				
 				if (index != -1)
 				{
@@ -147,8 +140,8 @@ int main()
 					break;
 				}
 
-				cout << "Введите элемент, который нужно найти:\n";
-				int index = array->BinarySearch(Input());
+				int value = InputIntValue();
+				int index = array->BinarySearch(value);
 
 				if (index != -1)
 				{
@@ -182,60 +175,4 @@ int main()
 	}
 
 	return 0;
-}
-
-//Проверка, что вводимое число int
-int Input()
-{
-	int number = 0;
-
-	while (true)
-	{
-		cin >> number;
-		if (cin.fail())
-		{
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << "ERROR\n";
-		}
-		else
-		{
-			break;
-		}
-	}
-
-	return number;
-}
-
-//Проверка, что массив не создан или пуст
-bool IsArrayNotCreateOrEmpty(DynamicArray* array)
-{
-	if (array == nullptr || array->IsEmpty())
-	{
-		cout << "Массив слишком маленький.\n";
-		return true;
-	}
-
-	return false;
-}
-
-//Проверка, что массив пуст
-bool IsArrayEmpty(DynamicArray* array)
-{
-	if (array->IsEmpty())
-	{
-		cout << "Массив слишком маленький.\n";
-		return true;
-	}
-
-	return false;
-}
-
-//Проверка, если массив ещё не создан, то создается
-void CheckArrayOnCreate(DynamicArray* array)
-{
-	if (array == nullptr)
-	{
-		array = new DynamicArray();
-	}
 }
