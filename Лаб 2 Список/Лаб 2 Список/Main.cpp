@@ -2,17 +2,11 @@
 #include <ctime>
 #include "Node.h"
 #include "List.h"
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\ListLibrary.h"
 
 //TODO: Не называйте решения по-русски
 using namespace std;
-
-int Input();
-bool IsListNotCreateOrEmpty(List* list);
-void CheckListOnCreate(List* list);
-int InputIndex();
-int InputValue();
-void FindCorrectIndex(List* list, int* index);
-void ShowFunctionRunTime(clock_t begin);
 
 int main()
 {
@@ -36,14 +30,14 @@ int main()
 			<< "10. Измерение времени для вставки.\n"
 			<< "0. Выход.\n\n";
 
-		switch (Input())
+		switch (InputInt())
 		{
 			case 1:
 			{
 				CheckListOnCreate(list);
 
-				cout << "Введите значение элемента:\n";
-				list->Add(Input());
+				int value = InputIntValue();
+				list->Add(value);
 				Print(list);
 				break;
 			}
@@ -55,13 +49,13 @@ int main()
 				}
 
 				cout << "Введите индекс элемента, который нужно удалить:\n";
-				int index = Input();
+				int index = InputInt();
 
 				while (index < 0 || index >= list->Length)
 				{
 					cout << "Элемента с таким индексом нет, "
 						<< "попробуйте еще раз:\n";
-					index = Input();
+					index = InputInt();
 				}
 
 				list->Remove(index);
@@ -72,8 +66,8 @@ int main()
 			{
 				CheckListOnCreate(list);
 
-				cout << "Введите значение элемента:\n";
-				list->InsertBefore(0, Input());
+				int value = InputIntValue();
+				list->InsertBefore(0, value);
 				Print(list);
 				break;
 			}
@@ -81,8 +75,8 @@ int main()
 			{
 				CheckListOnCreate(list);
 
-				cout << "Введите значение элемента:\n";
-				list->InsertAfter(list->Length - 1, Input());
+				int value = InputIntValue();
+				list->InsertAfter(list->Length - 1, value);
 				Print(list);
 				break;
 			}
@@ -97,7 +91,7 @@ int main()
 
 				FindCorrectIndex(list, &index);
 
-				int value = InputValue();
+				int value = InputIntValue();
 
 				list->InsertAfter(index, value);
 				Print(list);
@@ -113,7 +107,7 @@ int main()
 				int index = InputIndex();
 
 				FindCorrectIndex(list, &index);
-				int value = InputValue();
+				int value = InputIntValue();
 
 				list->InsertBefore(index, value);
 				Print(list);
@@ -137,8 +131,8 @@ int main()
 					break;
 				}
 
-				cout << "Введите значение элемента:\n";
-				int index = list->Search(Input());
+				int value = InputIntValue();
+				int index = list->Search(value);
 
 				if (index == -1)
 				{
@@ -161,13 +155,9 @@ int main()
 				list = new List();
 
 				cout << "Введите количество элементов списка:\n";
+				int count = InputInt();
 
-				int count = Input();
-
-				for (int i = 0; i < count; i++)
-				{
-					list->Add(i);
-				}
+				InsertCountElement(list, count);
 				int middle = list->Length / 2;
 
 				clock_t begin = clock();
@@ -189,14 +179,11 @@ int main()
 				list = new List();
 
 				cout << "Введите количество элементов списка:\n";
+				int count = InputInt();
 
-				int count = Input();
-
-				for (int i = 0; i < count; i++)
-				{
-					list->Add(i);
-				}
+				InsertCountElement(list, count);
 				int middle = list->Length / 2;
+
 				clock_t begin = clock();
 
 				list->InsertAfter(middle, 1);
@@ -224,78 +211,4 @@ int main()
 			}
 		}
 	}
-}
-
-//Проверка, что вводимое число int
-int Input()
-{
-	int input = 0;
-
-	while (true)
-	{
-		cin >> input;
-		if (cin.fail())
-		{
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << "ERROR\n";
-		}
-		else
-		{
-			break;
-		}
-	}
-
-	return input;
-}
-
-//Проверка, что список не создан или пуст
-bool IsListNotCreateOrEmpty(List* list)
-{
-	if (list == nullptr || list->IsEmpty())
-	{
-		cout << "Список пуст.\n";
-		return true;
-	}
-
-	return false;
-}
-
-//Проверка, если список ещё не создан, то создается
-void CheckListOnCreate(List* list)
-{
-	if (list == nullptr)
-	{
-		list = new List();
-	}
-}
-
-int InputIndex()
-{
-	cout << "Введите индекс элемента:\n";
-	return Input();
-}
-
-int InputValue()
-{
-	cout << "Введите значение элемента:\n";
-	return Input();
-}
-
-void FindCorrectIndex(List* list, int* index)
-{
-	while (*index < 0 || *index >= list->Length)
-	{
-		cout << "Элемента с таким индексом нет, "
-			<< "попробуйте еще раз:\n";
-		*index = Input();
-	}
-}
-
-//Вычисление времени работы функции
-void ShowFunctionRunTime(clock_t begin)
-{
-	clock_t end = clock();
-	double seconds = double(end - begin) / CLOCKS_PER_SEC;
-	cout << "The time is " << seconds << " seconds.\n";
 }

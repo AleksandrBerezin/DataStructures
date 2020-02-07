@@ -22,5 +22,3 @@ struct List
 		Length = 0;
 	}
 };
-
-void Print(List* list);

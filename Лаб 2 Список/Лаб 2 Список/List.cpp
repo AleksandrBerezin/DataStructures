@@ -277,22 +277,3 @@ bool List::IsEmpty()
 {
 	return Length == 0;
 }
-
-// Вывод списка на экран
-void Print(List* list)
-{
-	if (list->IsEmpty())
-	{
-		cout << "Список пуст.\n";
-		return;
-	}
-
-	Node* current = list->Head;
-	cout << "Полученный список: ";
-	while (current != nullptr)
-	{
-		cout << current->Data << " ";
-		current = current->Next;
-	}
-	cout << "\n";
-}
