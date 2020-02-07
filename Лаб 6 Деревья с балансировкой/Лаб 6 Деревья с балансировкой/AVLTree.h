@@ -16,5 +16,3 @@ struct AVLTree
 	void Clear(AVLTreeNode* node);
 	bool IsEmpty();
 };
-
-void Print(AVLTreeNode* node, int level);

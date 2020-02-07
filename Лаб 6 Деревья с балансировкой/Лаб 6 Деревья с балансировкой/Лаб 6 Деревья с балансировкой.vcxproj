@@ -149,7 +149,6 @@
   <ItemGroup>
     <ClCompile Include="AVLTree.cpp" />
     <ClCompile Include="AVLTreeNode.cpp" />
-    <ClCompile Include="Functions.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MenuAVLTree.cpp" />
     <ClCompile Include="MenuRBTree.cpp" />
@@ -158,7 +157,6 @@
   <ItemGroup>
     <ClInclude Include="AVLTree.h" />
     <ClInclude Include="AVLTreeNode.h" />
-    <ClInclude Include="Functions.h" />
     <ClInclude Include="MenuAVLTree.h" />
     <ClInclude Include="MenuRBTree.h" />
     <ClInclude Include="RBTree.h" />

@@ -3,13 +3,10 @@
 #include "RBTree.h"
 #include "RBTreeNode.h"
 #include "MenuRBTree.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\RBTreeLibrary.h"
 
 using namespace std;
-
-bool IsRBTreeNotCreateOrEmpty(RBTree* rbTree);
-void ShowFunctionRunTimeAndCountRotate(RBTree* rbTree, clock_t begin);
-void InsertCountElement(RBTree* rbTree, int count);
 
 void Menu(RBTree*& rbTree)
 {
@@ -36,8 +33,7 @@ void Menu(RBTree*& rbTree)
 					rbTree = new RBTree();
 				}
 
-				cout << "Введите значение элемента: ";
-				int value = InputInt();
+				int value = InputIntValue();
 				cout << "\n";
 
 				RBTreeNode* node;
@@ -66,8 +62,7 @@ void Menu(RBTree*& rbTree)
 					break;
 				}
 
-				cout << "Введите значение элемента: ";
-				int value = InputInt();
+				int value = InputIntValue();
 				cout << "\n";
 
 				RBTreeNode* node;
@@ -96,12 +91,10 @@ void Menu(RBTree*& rbTree)
 					break;
 				}
 
-				cout << "Введите ключ элемента: ";
-				int key = InputInt();
+				int key = InputIntKey();
 				cout << "\n";
 
-				RBTreeNode* node =
-					rbTree->Find(key);
+				RBTreeNode* node = rbTree->Find(key);
 
 				cout << (node == rbTree->Nil 
 					? "Такого элемента нет.\n"
@@ -199,35 +192,4 @@ void Menu(RBTree*& rbTree)
 	}
 
 	return;
-}
-
-//Проверка, что стек не создан или пуст
-bool IsRBTreeNotCreateOrEmpty(RBTree* rbTree)
-{
-	if (rbTree == nullptr || rbTree->IsEmpty())
-	{
-		cout << "Дерево пустое.\n";
-		return true;
-	}
-
-	return false;
-}
-
-//Вычисление времени работы функции
-void ShowFunctionRunTimeAndCountRotate(RBTree* rbTree, clock_t begin)
-{
-	clock_t end = clock();
-
-	double seconds = double(end - begin) / CLOCKS_PER_SEC;
-	cout << "Время - " << seconds << " секунд;\n";
-	cout << "Количество поворотов - " << rbTree->CountRotate
-		<< ".\n";
-}
-
-void InsertCountElement(RBTree* rbTree, int count)
-{
-	for (int i = 0; i < count; i++)
-	{
-		rbTree->Insert(i);
-	}
 }
