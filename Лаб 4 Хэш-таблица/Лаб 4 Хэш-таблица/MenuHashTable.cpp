@@ -1,12 +1,10 @@
 #include <iostream>
 #include "HashTable.h"
 #include "MenuHashTable.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\HashTableLibrary.h"
 
 using namespace std;
-
-bool IsHashTableNotCreateOrEmpty(HashTable* hashTable);
-bool IsHashTableNotCreate(HashTable* hashTable);
 
 void Menu(HashTable*& hashTable)
 {
@@ -31,10 +29,8 @@ void Menu(HashTable*& hashTable)
 					hashTable = new HashTable();
 				}
 
-				cout << "Введите ключ: ";
-				string key = SubKey(InputString());
-				cout << "Введите значение: ";
-				string value = InputString();
+				string key = InputStringKey();
+				string value = InputStringValue();
 
 				hashTable->Add(key, value);
 				Print(hashTable);
@@ -47,8 +43,7 @@ void Menu(HashTable*& hashTable)
 					break;
 				}
 
-				cout << "Введите ключ: ";
-				string key = SubKey(InputString());
+				string key = InputStringKey();
 
 				hashTable->Remove(key);
 				Print(hashTable);
@@ -61,8 +56,7 @@ void Menu(HashTable*& hashTable)
 					break;
 				}
 
-				cout << "Введите ключ: ";
-				string key = SubKey(InputString());
+				string key = InputStringKey();
 
 				string value = hashTable->Find(key);
 				if (value == "")
@@ -113,28 +107,4 @@ void Menu(HashTable*& hashTable)
 	}
 
 	return;
-}
-
-//Проверка, что стек не создан или пуст
-bool IsHashTableNotCreateOrEmpty(HashTable* hashTable)
-{
-	if (hashTable == nullptr || hashTable->IsEmpty())
-	{
-		cout << "Хеш-таблица пустая.\n";
-		return true;
-	}
-
-	return false;
-}
-
-//Проверка, что стек не создан
-bool IsHashTableNotCreate(HashTable* hashTable)
-{
-	if (hashTable == nullptr)
-	{
-		cout << "Хеш-таблица пустая.\n";
-		return true;
-	}
-
-	return false;
 }

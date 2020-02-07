@@ -210,32 +210,3 @@ bool HashTable::IsEmpty()
 {
 	return CurrentLength == 0;
 }
-
-// Вывод таблицы на экран
-void Print(HashTable* hashTable)
-{
-	cout << "\n\tХеш-таблица\n\n";
-	cout << "Индекс\t:\tКлюч\t:\tЗначение\n";
-	for (int i = 0; i < hashTable->Size; i++)
-	{
-		Node* current = &hashTable->KeyValueArray[i];
-		if (current->Key.empty())
-		{
-			cout << i << "\t:\tПусто\t:\tПусто\n";
-		}
-		else
-		{
-			cout << i << "\t:\t" << current->Key << "\t:\t" 
-				<< current->Value << "\n";
-			current = current->Next;
-
-			while (current != nullptr)
-			{
-				cout << "->\t:\t" << current->Key << "\t:\t" 
-					<< current->Value << "\n";
-				current = current->Next;
-			}
-		}
-	}
-	cout << "\n";
-}

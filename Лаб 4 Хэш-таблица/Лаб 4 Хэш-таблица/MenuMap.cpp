@@ -1,12 +1,10 @@
 #include <iostream>
 #include "Map.h"
 #include "MenuMap.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\MapLibrary.h"
 
 using namespace std;
-
-bool IsMapNotCreateOrEmpty(Map* map);
-bool IsMapNotCreate(Map* map);
 
 void Menu(Map*& map)
 {
@@ -31,10 +29,8 @@ void Menu(Map*& map)
 					map = new Map();
 				}
 
-				cout << "Введите ключ: ";
-				string key = SubKey(InputString());
-				cout << "Введите значение: ";
-				string value = InputString();
+				string key = InputStringKey();
+				string value = InputStringValue();
 
 				map->Add(key, value);
 				Print(map);
@@ -47,8 +43,7 @@ void Menu(Map*& map)
 					break;
 				}
 
-				cout << "Введите ключ: ";
-				string key = SubKey(InputString());
+				string key = InputStringKey();
 
 				map->Remove(key);
 				Print(map);
@@ -61,8 +56,7 @@ void Menu(Map*& map)
 					break;
 				}
 
-				cout << "Введите ключ: ";
-				string key = SubKey(InputString());
+				string key = InputStringKey();
 
 				string value = map->Find(key);
 				if (value == "")
@@ -113,28 +107,4 @@ void Menu(Map*& map)
 	}
 
 	return;
-}
-
-//Проверка, что стек не создан или пуст
-bool IsMapNotCreateOrEmpty(Map* map)
-{
-	if (map == nullptr || map->IsEmpty())
-	{
-		cout << "Словарь пуст.\n";
-		return true;
-	}
-
-	return false;
-}
-
-//Проверка, что стек не создан
-bool IsMapNotCreate(Map* map)
-{
-	if (map == nullptr)
-	{
-		cout << "Словарь пуст.\n";
-		return true;
-	}
-
-	return false;
 }

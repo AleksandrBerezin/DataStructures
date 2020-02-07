@@ -151,7 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Functions.cpp" />
     <ClCompile Include="HashTable.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -159,7 +158,6 @@
     <ClCompile Include="MenuMap.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Functions.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MenuHashTable.h" />

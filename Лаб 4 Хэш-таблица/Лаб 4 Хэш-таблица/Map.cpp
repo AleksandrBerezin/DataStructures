@@ -62,23 +62,3 @@ bool Map::IsEmpty()
 {
 	return InternalHashTable->CurrentLength == 0;
 }
-
-// Вывод словаря на экран
-void Print(Map* map)
-{
-	cout << "\n\tСловарь\n\n";
-	cout << "Ключ\t:\tЗначение\n";
-	for (int i = 0; i < map->InternalHashTable->Size; i++)
-	{
-		Node* current = &map->InternalHashTable->KeyValueArray[i];
-		while (current != nullptr)
-		{
-			if (!current->Key.empty())
-			{
-				cout << current->Key << "\t:\t" << current->Value << "\n";
-			}
-			current = current->Next;
-		}
-	}
-	cout << "\n";
-}

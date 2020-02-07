@@ -20,5 +20,3 @@ struct Map
 		InternalHashTable = new HashTable();
 	}
 };
-
-void Print(Map* map);
