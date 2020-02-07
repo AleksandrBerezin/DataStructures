@@ -1,6 +1,5 @@
 #pragma once
 #include "Stack.h"
-#include "TwoStackQueue.h"
 
 struct TwoStackQueue
 {
@@ -18,5 +17,3 @@ struct TwoStackQueue
 		OutputStack = new Stack();
 	}
 };
-
-void Print(TwoStackQueue* stackQueue);

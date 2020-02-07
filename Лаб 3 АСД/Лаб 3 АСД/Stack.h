@@ -22,5 +22,3 @@ struct Stack
 		CurrentLength = 0;
 	}
 };
-
-void Print(Stack* stack);

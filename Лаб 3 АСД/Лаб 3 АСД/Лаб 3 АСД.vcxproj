@@ -151,7 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Functions.cpp" />
     <ClCompile Include="MenuRingBuffer.cpp" />
     <ClCompile Include="MenuRingBufferQueue.cpp" />
     <ClCompile Include="MenuStack.cpp" />
@@ -164,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constant.h" />
-    <ClInclude Include="Functions.h" />
     <ClInclude Include="MenuRingBuffer.h" />
     <ClInclude Include="MenuRingBufferQueue.h" />
     <ClInclude Include="MenuStack.h" />

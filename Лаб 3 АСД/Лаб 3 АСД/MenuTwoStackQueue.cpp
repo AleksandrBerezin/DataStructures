@@ -1,12 +1,10 @@
 #include <iostream>
 #include "TwoStackQueue.h"
 #include "MenuStack.h"
-#include "Functions.h"
+#include "..\..\Libraries\CommonLibrary.h"
+#include "..\..\Libraries\TwoStackQueue.h"
 
 using namespace std;
-
-bool IsStackQueueNotCreateOrEmpty(TwoStackQueue* stackQueue);
-bool IsStackQueueNotCreate(TwoStackQueue* stackQueue);
 
 void Menu(TwoStackQueue*& stackQueue)
 {
@@ -21,8 +19,7 @@ void Menu(TwoStackQueue*& stackQueue)
 			<< "4. Вывод очереди на экран.\n"
 			<< "0. Назад.\n\n";
 
-		int variant = Input();
-		switch (variant)
+		switch (InputInt())
 		{
 			case 1:
 			{
@@ -31,8 +28,8 @@ void Menu(TwoStackQueue*& stackQueue)
 					stackQueue = new TwoStackQueue();
 				}
 
-				cout << "Введите значение элемента:\n";
-				stackQueue->Enqueue(Input());
+				int value = InputIntValue();
+				stackQueue->Enqueue(value);
 				Print(stackQueue);
 				break;
 			}
@@ -84,28 +81,4 @@ void Menu(TwoStackQueue*& stackQueue)
 	}
 
 	return;
-}
-
-//Проверка, что стек не создан или пуст
-bool IsStackQueueNotCreateOrEmpty(TwoStackQueue* stackQueue)
-{
-	if (stackQueue == nullptr || stackQueue->IsEmpty())
-	{
-		cout << "Очередь пустая.\n";
-		return true;
-	}
-
-	return false;
-}
-
-//Проверка, что стек не создан
-bool IsStackQueueNotCreate(TwoStackQueue* stackQueue)
-{
-	if (stackQueue == nullptr)
-	{
-		cout << "Очередь пустая.\n";
-		return true;
-	}
-
-	return false;
 }
