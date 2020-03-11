@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{1f6739be-210a-4608-9754-b1c5c507c4aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Lab1">
+      <UniqueIdentifier>{bc949d61-7c21-4f9a-a1ff-7c62943ffd1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab1">
+      <UniqueIdentifier>{88e53545-0f58-424a-ab48-e36e398284fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Lab2">
+      <UniqueIdentifier>{4a7a3aef-bf80-4b1b-b9fb-b27717bfd501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab2">
+      <UniqueIdentifier>{e3301ebe-a688-43a6-8829-66a24da74540}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab3">
+      <UniqueIdentifier>{450d48a4-7516-4094-81ee-3a9cff6515b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Lab3">
+      <UniqueIdentifier>{3518086b-8e5f-41ba-bde7-079495a2d4fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Lab3\Menus">
+      <UniqueIdentifier>{05d29666-0ec1-4a28-9396-57501a7a118b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab3\Menus">
+      <UniqueIdentifier>{07513913-730e-4481-b337-4e737f206afb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Lab1">
+      <UniqueIdentifier>{5c08cdf6-33aa-48a8-97ce-089c9c9eb34d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Lab2">
+      <UniqueIdentifier>{c7fc6128-cda9-46cf-b196-42ea9f8b988a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Lab3">
+      <UniqueIdentifier>{4729e544-9db9-4378-8dd8-18ec54a872ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Lab4">
+      <UniqueIdentifier>{4ade64fe-7433-406b-8ce9-3f5ee461358e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Lab5">
+      <UniqueIdentifier>{a4a976da-7619-4bee-ae15-85597e988e9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Lab6">
+      <UniqueIdentifier>{aa139e8a-1a0c-44b0-bd94-97ec613bfe51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab4">
+      <UniqueIdentifier>{7ab46f9a-f67f-47b5-bc29-fe84806bba88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab5">
+      <UniqueIdentifier>{2f67cbd2-eb76-406d-a75f-578b73315ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab6">
+      <UniqueIdentifier>{ce55d406-ac0b-4b5f-8f21-d1071e4b1824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Lab4">
+      <UniqueIdentifier>{bfba0faf-99c4-4299-9cbb-69108d1247af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Lab5">
+      <UniqueIdentifier>{3fd5fd94-db0b-4128-83ab-91eb968e5de9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Lab6">
+      <UniqueIdentifier>{28dec326-c6eb-4468-ba15-817fe163bd69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Lab4\Menus">
+      <UniqueIdentifier>{8b5fff2e-4774-4714-9431-c32bcf30076b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab4\Menus">
+      <UniqueIdentifier>{a0717c81-7ebf-42bf-8ded-2c1f6a33fc3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Lab5\Menus">
+      <UniqueIdentifier>{eff03030-e363-4f2a-b31e-457daa2ca19c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab5\Menus">
+      <UniqueIdentifier>{0391be58-9662-4e17-8f62-4d8f28240bee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Lab6\Menus">
+      <UniqueIdentifier>{bcb3302f-c05f-42b1-87e7-f9300d2b6d8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab6\Menus">
+      <UniqueIdentifier>{2a65ac4a-72c9-4089-96cc-d12f4f47a82a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Menus.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonLibrary.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicArray.h">
+      <Filter>Header Files\Lab1</Filter>
+    </ClInclude>
+    <ClInclude Include="ListNode.h">
+      <Filter>Header Files\Lab2</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Header Files\Lab2</Filter>
+    </ClInclude>
+    <ClInclude Include="StackNode.h">
+      <Filter>Header Files\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Header Files\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantLab3.h">
+      <Filter>Header Files\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuRingBuffer.h">
+      <Filter>Header Files\Lab3\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuRingBufferQueue.h">
+      <Filter>Header Files\Lab3\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuStack.h">
+      <Filter>Header Files\Lab3\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuTwoStackQueue.h">
+      <Filter>Header Files\Lab3\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="RingBuffer.h">
+      <Filter>Header Files\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="RingBufferQueue.h">
+      <Filter>Header Files\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoStackQueue.h">
+      <Filter>Header Files\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicArrayLibrary.h">
+      <Filter>Common\Lab1</Filter>
+    </ClInclude>
+    <ClInclude Include="ListLibrary.h">
+      <Filter>Common\Lab2</Filter>
+    </ClInclude>
+    <ClInclude Include="StackLibrary.h">
+      <Filter>Common\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoStackQueueLibrary.h">
+      <Filter>Common\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="RingQueueLibrary.h">
+      <Filter>Common\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="RingBufferLibrary.h">
+      <Filter>Common\Lab3</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTableLibrary.h">
+      <Filter>Common\Lab4</Filter>
+    </ClInclude>
+    <ClInclude Include="MapLibrary.h">
+      <Filter>Common\Lab4</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTreeLibrary.h">
+      <Filter>Common\Lab5</Filter>
+    </ClInclude>
+    <ClInclude Include="TreapLibrary.h">
+      <Filter>Common\Lab5</Filter>
+    </ClInclude>
+    <ClInclude Include="RBTreeLibrary.h">
+      <Filter>Common\Lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="AVLTreeLibrary.h">
+      <Filter>Common\Lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTable.h">
+      <Filter>Header Files\Lab4</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\Lab4</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuHashTable.h">
+      <Filter>Header Files\Lab4\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuMap.h">
+      <Filter>Header Files\Lab4\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTableNode.h">
+      <Filter>Header Files\Lab4</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree.h">
+      <Filter>Header Files\Lab5</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuBinaryTree.h">
+      <Filter>Header Files\Lab5\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuTreap.h">
+      <Filter>Header Files\Lab5\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Treap.h">
+      <Filter>Header Files\Lab5</Filter>
+    </ClInclude>
+    <ClInclude Include="TreapNode.h">
+      <Filter>Header Files\Lab5</Filter>
+    </ClInclude>
+    <ClInclude Include="AVLTree.h">
+      <Filter>Header Files\Lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="AVLTreeNode.h">
+      <Filter>Header Files\Lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuAVLTree.h">
+      <Filter>Header Files\Lab6\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuRBTree.h">
+      <Filter>Header Files\Lab6\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="RBTree.h">
+      <Filter>Header Files\Lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="RBTreeNode.h">
+      <Filter>Header Files\Lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTreeNode.h">
+      <Filter>Header Files\Lab5</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicArray.cpp">
+      <Filter>Source Files\Lab1</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuLab1.cpp">
+      <Filter>Source Files\Lab1</Filter>
+    </ClCompile>
+    <ClCompile Include="List.cpp">
+      <Filter>Source Files\Lab2</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuLab2.cpp">
+      <Filter>Source Files\Lab2</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuRingBuffer.cpp">
+      <Filter>Source Files\Lab3\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuRingBufferQueue.cpp">
+      <Filter>Source Files\Lab3\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuStack.cpp">
+      <Filter>Source Files\Lab3\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuTwoStackQueue.cpp">
+      <Filter>Source Files\Lab3\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="RingBuffer.cpp">
+      <Filter>Source Files\Lab3</Filter>
+    </ClCompile>
+    <ClCompile Include="RingBufferQueue.cpp">
+      <Filter>Source Files\Lab3</Filter>
+    </ClCompile>
+    <ClCompile Include="Stack.cpp">
+      <Filter>Source Files\Lab3</Filter>
+    </ClCompile>
+    <ClCompile Include="TwoStackQueue.cpp">
+      <Filter>Source Files\Lab3</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable.cpp">
+      <Filter>Source Files\Lab4</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\Lab4</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuHashTable.cpp">
+      <Filter>Source Files\Lab4\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuMap.cpp">
+      <Filter>Source Files\Lab4\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuLab4.cpp">
+      <Filter>Source Files\Lab4\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuLab3.cpp">
+      <Filter>Source Files\Lab3\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryTree.cpp">
+      <Filter>Source Files\Lab5</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuBinaryTree.cpp">
+      <Filter>Source Files\Lab5\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuTreap.cpp">
+      <Filter>Source Files\Lab5\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Treap.cpp">
+      <Filter>Source Files\Lab5</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuLab5.cpp">
+      <Filter>Source Files\Lab5\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="AVLTree.cpp">
+      <Filter>Source Files\Lab6</Filter>
+    </ClCompile>
+    <ClCompile Include="AVLTreeNode.cpp">
+      <Filter>Source Files\Lab6</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuAVLTree.cpp">
+      <Filter>Source Files\Lab6\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuRBTree.cpp">
+      <Filter>Source Files\Lab6\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="RBTree.cpp">
+      <Filter>Source Files\Lab6</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuLab6.cpp">
+      <Filter>Source Files\Lab6\Menus</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
