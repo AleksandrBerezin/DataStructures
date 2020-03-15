@@ -1,6 +1,6 @@
 #include <iostream>
-#include "CommonLibrary.h"
-#include "Menus.h"
+#include "Common/CommonLibrary.h"
+#include "Common/Menus.h"
 
 using namespace std;
 
